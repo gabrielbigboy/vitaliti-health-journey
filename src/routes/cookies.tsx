@@ -13,7 +13,27 @@ export const Route = createFileRoute("/cookies")({
     <LegalPage
       title="Política de Cookies"
       intro="Explicamos quais cookies utilizamos e como você pode gerenciar suas preferências."
-      sections![
+      sections={[
+        {
+          heading: "O que são cookies",
+          body: "Pequenos arquivos armazenados no seu dispositivo que permitem o funcionamento do site e, quando autorizados, a medição de uso e a comunicação personalizada.",
+        },
+        {
+          heading: "Cookies necessários",
+          body: "Essenciais para navegação, segurança e funcionamento básico. Não podem ser desativados.",
+        },
+        {
+          heading: "Cookies analíticos",
+          body: "Ajudam a entender como o site é utilizado para melhorar a experiência. Dependem do seu consentimento.",
+        },
+        {
+          heading: "Cookies de marketing",
+          body: "Permitem medir campanhas e apresentar comunicações mais relevantes. Dependem do seu consentimento.",
+        },
+        {
+          heading: "Gerenciar preferências",
+          body: "Você pode aceitar todos, aceitar apenas os necessários ou configurar cada categoria no banner de cookies exibido no site.",
+        },
       ]}
     />
   ),
