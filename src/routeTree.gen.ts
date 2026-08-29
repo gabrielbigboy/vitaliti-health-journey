@@ -10,16 +10,21 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteImport } from './routes/app'
 import { Route as AvaliacaoRouteImport } from './routes/avaliacao'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ComoFuncionaRouteImport } from './routes/como-funciona'
 import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as CriarContaRouteImport } from './routes/criar-conta'
 import { Route as EntrarRouteImport } from './routes/entrar'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PlanosRouteImport } from './routes/planos'
+import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
 import { Route as ResultadosRouteImport } from './routes/resultados'
 import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
+import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as EspecialistasIndexRouteImport } from './routes/especialistas.index'
@@ -30,6 +35,11 @@ import { Route as TratamentosSlugRouteImport } from './routes/tratamentos.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AvaliacaoRoute = AvaliacaoRouteImport.update({
@@ -52,6 +62,11 @@ const ContatoRoute = ContatoRouteImport.update({
   path: '/contato',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CriarContaRoute = CriarContaRouteImport.update({
   id: '/criar-conta',
   path: '/criar-conta',
@@ -72,6 +87,11 @@ const PlanosRoute = PlanosRouteImport.update({
   path: '/planos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoliticaDePrivacidadeRoute = PoliticaDePrivacidadeRouteImport.update({
+  id: '/politica-de-privacidade',
+  path: '/politica-de-privacidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResultadosRoute = ResultadosRouteImport.update({
   id: '/resultados',
   path: '/resultados',
@@ -81,6 +101,16 @@ const SobreRoute = SobreRouteImport.update({
   id: '/sobre',
   path: '/sobre',
   getParentRoute: () => rootRouteImport,
+} as any)
+const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
+  id: '/termos-de-uso',
+  path: '/termos-de-uso',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
@@ -115,19 +145,24 @@ const TratamentosSlugRoute = TratamentosSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
   '/avaliacao': typeof AvaliacaoRoute
   '/checkout': typeof CheckoutRoute
   '/como-funciona': typeof ComoFuncionaRoute
   '/contato': typeof ContatoRoute
+  '/cookies': typeof CookiesRoute
   '/criar-conta': typeof CriarContaRoute
   '/entrar': typeof EntrarRoute
   '/faq': typeof FaqRoute
   '/planos': typeof PlanosRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/resultados': typeof ResultadosRoute
   '/sobre': typeof SobreRoute
+  '/termos-de-uso': typeof TermosDeUsoRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/especialistas/$slug': typeof EspecialistasSlugRoute
   '/tratamentos/$slug': typeof TratamentosSlugRoute
+  '/app/': typeof AppIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/especialistas/': typeof EspecialistasIndexRoute
   '/tratamentos/': typeof TratamentosIndexRoute
@@ -138,15 +173,19 @@ export interface FileRoutesByTo {
   '/checkout': typeof CheckoutRoute
   '/como-funciona': typeof ComoFuncionaRoute
   '/contato': typeof ContatoRoute
+  '/cookies': typeof CookiesRoute
   '/criar-conta': typeof CriarContaRoute
   '/entrar': typeof EntrarRoute
   '/faq': typeof FaqRoute
   '/planos': typeof PlanosRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/resultados': typeof ResultadosRoute
   '/sobre': typeof SobreRoute
+  '/termos-de-uso': typeof TermosDeUsoRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/especialistas/$slug': typeof EspecialistasSlugRoute
   '/tratamentos/$slug': typeof TratamentosSlugRoute
+  '/app': typeof AppIndexRoute
   '/blog': typeof BlogIndexRoute
   '/especialistas': typeof EspecialistasIndexRoute
   '/tratamentos': typeof TratamentosIndexRoute
@@ -154,19 +193,24 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
   '/avaliacao': typeof AvaliacaoRoute
   '/checkout': typeof CheckoutRoute
   '/como-funciona': typeof ComoFuncionaRoute
   '/contato': typeof ContatoRoute
+  '/cookies': typeof CookiesRoute
   '/criar-conta': typeof CriarContaRoute
   '/entrar': typeof EntrarRoute
   '/faq': typeof FaqRoute
   '/planos': typeof PlanosRoute
+  '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
   '/resultados': typeof ResultadosRoute
   '/sobre': typeof SobreRoute
+  '/termos-de-uso': typeof TermosDeUsoRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/especialistas/$slug': typeof EspecialistasSlugRoute
   '/tratamentos/$slug': typeof TratamentosSlugRoute
+  '/app/': typeof AppIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/especialistas/': typeof EspecialistasIndexRoute
   '/tratamentos/': typeof TratamentosIndexRoute
@@ -175,19 +219,24 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/app'
     | '/avaliacao'
     | '/checkout'
     | '/como-funciona'
     | '/contato'
+    | '/cookies'
     | '/criar-conta'
     | '/entrar'
     | '/faq'
     | '/planos'
+    | '/politica-de-privacidade'
     | '/resultados'
     | '/sobre'
+    | '/termos-de-uso'
     | '/blog/$slug'
     | '/especialistas/$slug'
     | '/tratamentos/$slug'
+    | '/app/'
     | '/blog/'
     | '/especialistas/'
     | '/tratamentos/'
@@ -198,34 +247,43 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/como-funciona'
     | '/contato'
+    | '/cookies'
     | '/criar-conta'
     | '/entrar'
     | '/faq'
     | '/planos'
+    | '/politica-de-privacidade'
     | '/resultados'
     | '/sobre'
+    | '/termos-de-uso'
     | '/blog/$slug'
     | '/especialistas/$slug'
     | '/tratamentos/$slug'
+    | '/app'
     | '/blog'
     | '/especialistas'
     | '/tratamentos'
   id:
     | '__root__'
     | '/'
+    | '/app'
     | '/avaliacao'
     | '/checkout'
     | '/como-funciona'
     | '/contato'
+    | '/cookies'
     | '/criar-conta'
     | '/entrar'
     | '/faq'
     | '/planos'
+    | '/politica-de-privacidade'
     | '/resultados'
     | '/sobre'
+    | '/termos-de-uso'
     | '/blog/$slug'
     | '/especialistas/$slug'
     | '/tratamentos/$slug'
+    | '/app/'
     | '/blog/'
     | '/especialistas/'
     | '/tratamentos/'
@@ -233,16 +291,20 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
   AvaliacaoRoute: typeof AvaliacaoRoute
   CheckoutRoute: typeof CheckoutRoute
   ComoFuncionaRoute: typeof ComoFuncionaRoute
   ContatoRoute: typeof ContatoRoute
+  CookiesRoute: typeof CookiesRoute
   CriarContaRoute: typeof CriarContaRoute
   EntrarRoute: typeof EntrarRoute
   FaqRoute: typeof FaqRoute
   PlanosRoute: typeof PlanosRoute
+  PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
   ResultadosRoute: typeof ResultadosRoute
   SobreRoute: typeof SobreRoute
+  TermosDeUsoRoute: typeof TermosDeUsoRoute
   BlogSlugRoute: typeof BlogSlugRoute
   EspecialistasSlugRoute: typeof EspecialistasSlugRoute
   TratamentosSlugRoute: typeof TratamentosSlugRoute
@@ -258,6 +320,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/avaliacao': {
@@ -288,6 +357,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContatoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/criar-conta': {
       id: '/criar-conta'
       path: '/criar-conta'
@@ -316,6 +392,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlanosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/politica-de-privacidade': {
+      id: '/politica-de-privacidade'
+      path: '/politica-de-privacidade'
+      fullPath: '/politica-de-privacidade'
+      preLoaderRoute: typeof PoliticaDePrivacidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resultados': {
       id: '/resultados'
       path: '/resultados'
@@ -329,6 +412,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/sobre'
       preLoaderRoute: typeof SobreRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/termos-de-uso': {
+      id: '/termos-de-uso'
+      path: '/termos-de-uso'
+      fullPath: '/termos-de-uso'
+      preLoaderRoute: typeof TermosDeUsoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
     }
     '/blog/': {
       id: '/blog/'
@@ -375,18 +472,32 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AppRouteChildren {
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
   AvaliacaoRoute: AvaliacaoRoute,
   CheckoutRoute: CheckoutRoute,
   ComoFuncionaRoute: ComoFuncionaRoute,
   ContatoRoute: ContatoRoute,
+  CookiesRoute: CookiesRoute,
   CriarContaRoute: CriarContaRoute,
   EntrarRoute: EntrarRoute,
   FaqRoute: FaqRoute,
   PlanosRoute: PlanosRoute,
+  PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
   ResultadosRoute: ResultadosRoute,
   SobreRoute: SobreRoute,
+  TermosDeUsoRoute: TermosDeUsoRoute,
   BlogSlugRoute: BlogSlugRoute,
   EspecialistasSlugRoute: EspecialistasSlugRoute,
   TratamentosSlugRoute: TratamentosSlugRoute,
