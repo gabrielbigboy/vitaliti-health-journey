@@ -90,7 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Vitaliti Saúde" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "theme-color", content: "#236B5A" },
+      { name: "theme-color", content: "#1F4E8C" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
