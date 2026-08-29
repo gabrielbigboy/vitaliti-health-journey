@@ -10,33 +10,245 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AvaliacaoRouteImport } from './routes/avaliacao'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as ComoFuncionaRouteImport } from './routes/como-funciona'
+import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as CriarContaRouteImport } from './routes/criar-conta'
+import { Route as EntrarRouteImport } from './routes/entrar'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as PlanosRouteImport } from './routes/planos'
+import { Route as ResultadosRouteImport } from './routes/resultados'
+import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as EspecialistasIndexRouteImport } from './routes/especialistas.index'
+import { Route as EspecialistasSlugRouteImport } from './routes/especialistas.$slug'
+import { Route as TratamentosIndexRouteImport } from './routes/tratamentos.index'
+import { Route as TratamentosSlugRouteImport } from './routes/tratamentos.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AvaliacaoRoute = AvaliacaoRouteImport.update({
+  id: '/avaliacao',
+  path: '/avaliacao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComoFuncionaRoute = ComoFuncionaRouteImport.update({
+  id: '/como-funciona',
+  path: '/como-funciona',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CriarContaRoute = CriarContaRouteImport.update({
+  id: '/criar-conta',
+  path: '/criar-conta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrarRoute = EntrarRouteImport.update({
+  id: '/entrar',
+  path: '/entrar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlanosRoute = PlanosRouteImport.update({
+  id: '/planos',
+  path: '/planos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResultadosRoute = ResultadosRouteImport.update({
+  id: '/resultados',
+  path: '/resultados',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EspecialistasIndexRoute = EspecialistasIndexRouteImport.update({
+  id: '/especialistas/',
+  path: '/especialistas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EspecialistasSlugRoute = EspecialistasSlugRouteImport.update({
+  id: '/especialistas/$slug',
+  path: '/especialistas/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TratamentosIndexRoute = TratamentosIndexRouteImport.update({
+  id: '/tratamentos/',
+  path: '/tratamentos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TratamentosSlugRoute = TratamentosSlugRouteImport.update({
+  id: '/tratamentos/$slug',
+  path: '/tratamentos/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/avaliacao': typeof AvaliacaoRoute
+  '/checkout': typeof CheckoutRoute
+  '/como-funciona': typeof ComoFuncionaRoute
+  '/contato': typeof ContatoRoute
+  '/criar-conta': typeof CriarContaRoute
+  '/entrar': typeof EntrarRoute
+  '/faq': typeof FaqRoute
+  '/planos': typeof PlanosRoute
+  '/resultados': typeof ResultadosRoute
+  '/sobre': typeof SobreRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/especialistas/$slug': typeof EspecialistasSlugRoute
+  '/tratamentos/$slug': typeof TratamentosSlugRoute
+  '/blog/': typeof BlogIndexRoute
+  '/especialistas/': typeof EspecialistasIndexRoute
+  '/tratamentos/': typeof TratamentosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/avaliacao': typeof AvaliacaoRoute
+  '/checkout': typeof CheckoutRoute
+  '/como-funciona': typeof ComoFuncionaRoute
+  '/contato': typeof ContatoRoute
+  '/criar-conta': typeof CriarContaRoute
+  '/entrar': typeof EntrarRoute
+  '/faq': typeof FaqRoute
+  '/planos': typeof PlanosRoute
+  '/resultados': typeof ResultadosRoute
+  '/sobre': typeof SobreRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/especialistas/$slug': typeof EspecialistasSlugRoute
+  '/tratamentos/$slug': typeof TratamentosSlugRoute
+  '/blog': typeof BlogIndexRoute
+  '/especialistas': typeof EspecialistasIndexRoute
+  '/tratamentos': typeof TratamentosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/avaliacao': typeof AvaliacaoRoute
+  '/checkout': typeof CheckoutRoute
+  '/como-funciona': typeof ComoFuncionaRoute
+  '/contato': typeof ContatoRoute
+  '/criar-conta': typeof CriarContaRoute
+  '/entrar': typeof EntrarRoute
+  '/faq': typeof FaqRoute
+  '/planos': typeof PlanosRoute
+  '/resultados': typeof ResultadosRoute
+  '/sobre': typeof SobreRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/especialistas/$slug': typeof EspecialistasSlugRoute
+  '/tratamentos/$slug': typeof TratamentosSlugRoute
+  '/blog/': typeof BlogIndexRoute
+  '/especialistas/': typeof EspecialistasIndexRoute
+  '/tratamentos/': typeof TratamentosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/avaliacao'
+    | '/checkout'
+    | '/como-funciona'
+    | '/contato'
+    | '/criar-conta'
+    | '/entrar'
+    | '/faq'
+    | '/planos'
+    | '/resultados'
+    | '/sobre'
+    | '/blog/$slug'
+    | '/especialistas/$slug'
+    | '/tratamentos/$slug'
+    | '/blog/'
+    | '/especialistas/'
+    | '/tratamentos/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/avaliacao'
+    | '/checkout'
+    | '/como-funciona'
+    | '/contato'
+    | '/criar-conta'
+    | '/entrar'
+    | '/faq'
+    | '/planos'
+    | '/resultados'
+    | '/sobre'
+    | '/blog/$slug'
+    | '/especialistas/$slug'
+    | '/tratamentos/$slug'
+    | '/blog'
+    | '/especialistas'
+    | '/tratamentos'
+  id:
+    | '__root__'
+    | '/'
+    | '/avaliacao'
+    | '/checkout'
+    | '/como-funciona'
+    | '/contato'
+    | '/criar-conta'
+    | '/entrar'
+    | '/faq'
+    | '/planos'
+    | '/resultados'
+    | '/sobre'
+    | '/blog/$slug'
+    | '/especialistas/$slug'
+    | '/tratamentos/$slug'
+    | '/blog/'
+    | '/especialistas/'
+    | '/tratamentos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AvaliacaoRoute: typeof AvaliacaoRoute
+  CheckoutRoute: typeof CheckoutRoute
+  ComoFuncionaRoute: typeof ComoFuncionaRoute
+  ContatoRoute: typeof ContatoRoute
+  CriarContaRoute: typeof CriarContaRoute
+  EntrarRoute: typeof EntrarRoute
+  FaqRoute: typeof FaqRoute
+  PlanosRoute: typeof PlanosRoute
+  ResultadosRoute: typeof ResultadosRoute
+  SobreRoute: typeof SobreRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  EspecialistasSlugRoute: typeof EspecialistasSlugRoute
+  TratamentosSlugRoute: typeof TratamentosSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+  EspecialistasIndexRoute: typeof EspecialistasIndexRoute
+  TratamentosIndexRoute: typeof TratamentosIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +260,139 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/avaliacao': {
+      id: '/avaliacao'
+      path: '/avaliacao'
+      fullPath: '/avaliacao'
+      preLoaderRoute: typeof AvaliacaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/como-funciona': {
+      id: '/como-funciona'
+      path: '/como-funciona'
+      fullPath: '/como-funciona'
+      preLoaderRoute: typeof ComoFuncionaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/criar-conta': {
+      id: '/criar-conta'
+      path: '/criar-conta'
+      fullPath: '/criar-conta'
+      preLoaderRoute: typeof CriarContaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entrar': {
+      id: '/entrar'
+      path: '/entrar'
+      fullPath: '/entrar'
+      preLoaderRoute: typeof EntrarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planos': {
+      id: '/planos'
+      path: '/planos'
+      fullPath: '/planos'
+      preLoaderRoute: typeof PlanosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resultados': {
+      id: '/resultados'
+      path: '/resultados'
+      fullPath: '/resultados'
+      preLoaderRoute: typeof ResultadosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/especialistas/': {
+      id: '/especialistas/'
+      path: '/especialistas'
+      fullPath: '/especialistas/'
+      preLoaderRoute: typeof EspecialistasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/especialistas/$slug': {
+      id: '/especialistas/$slug'
+      path: '/especialistas/$slug'
+      fullPath: '/especialistas/$slug'
+      preLoaderRoute: typeof EspecialistasSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tratamentos/': {
+      id: '/tratamentos/'
+      path: '/tratamentos'
+      fullPath: '/tratamentos/'
+      preLoaderRoute: typeof TratamentosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tratamentos/$slug': {
+      id: '/tratamentos/$slug'
+      path: '/tratamentos/$slug'
+      fullPath: '/tratamentos/$slug'
+      preLoaderRoute: typeof TratamentosSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AvaliacaoRoute: AvaliacaoRoute,
+  CheckoutRoute: CheckoutRoute,
+  ComoFuncionaRoute: ComoFuncionaRoute,
+  ContatoRoute: ContatoRoute,
+  CriarContaRoute: CriarContaRoute,
+  EntrarRoute: EntrarRoute,
+  FaqRoute: FaqRoute,
+  PlanosRoute: PlanosRoute,
+  ResultadosRoute: ResultadosRoute,
+  SobreRoute: SobreRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  EspecialistasSlugRoute: EspecialistasSlugRoute,
+  TratamentosSlugRoute: TratamentosSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
+  EspecialistasIndexRoute: EspecialistasIndexRoute,
+  TratamentosIndexRoute: TratamentosIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
