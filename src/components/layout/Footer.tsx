@@ -95,7 +95,7 @@ export function Footer() {
                     <li key={link.label}>
                       <Link
                         to={link.to}
-                        params={"params" in link ? link.params : undefined}
+                        params={"params" in link ? link.params : {}}
 
                         className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                       >
