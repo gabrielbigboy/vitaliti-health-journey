@@ -15,9 +15,8 @@ import { track } from "@/lib/tracking";
 type Search = { plano?: string };
 
 export const Route = createFileRoute("/checkout")({
-  validateSearch: (search: Record<string, unknown>): Search => ({
-    plano: typeof search["plano"] === "string" ? search["plano"] : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): Search =>
+    typeof search["plano"] === "string" ? { plano: search["plano"] } : {},
   head: () =>
     pageHead({
       title: "Checkout",

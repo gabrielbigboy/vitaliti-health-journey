@@ -47,7 +47,7 @@ function Evolucao() {
       {
         date: new Date().toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" }),
         weight: value,
-        note: note.trim() || undefined,
+        ...(note.trim() ? { note: note.trim() } : {}),
       },
     ]);
     setWeight("");

@@ -56,7 +56,7 @@ export function captureAttribution(): Attribution {
   const merged: Attribution = {
     ...fresh,
     landing_page: window.location.pathname,
-    referrer: document.referrer || undefined,
+    ...(document.referrer ? { referrer: document.referrer } : {}),
     captured_at: new Date().toISOString(),
   };
   try {
