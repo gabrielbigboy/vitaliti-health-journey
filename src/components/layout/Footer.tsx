@@ -17,11 +17,12 @@ const columns = [
   {
     title: "Tratamentos",
     links: [
-      { label: "Emagrecimento", to: "/tratamentos/emagrecimento" },
-      { label: "Nutrição", to: "/tratamentos/nutricao" },
-      { label: "Saúde metabólica", to: "/tratamentos/saude-metabolica" },
-      { label: "Hábitos", to: "/tratamentos/habitos" },
+      { label: "Emagrecimento", to: "/tratamentos/$slug", params: { slug: "emagrecimento" } },
+      { label: "Nutrição", to: "/tratamentos/$slug", params: { slug: "nutricao" } },
+      { label: "Saúde metabólica", to: "/tratamentos/$slug", params: { slug: "saude-metabolica" } },
+      { label: "Hábitos", to: "/tratamentos/$slug", params: { slug: "habitos" } },
     ],
+
   },
   {
     title: "Conteúdo",
