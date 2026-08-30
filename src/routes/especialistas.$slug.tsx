@@ -54,7 +54,7 @@ function ExpertPage() {
       <Section tone="default">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-muted">
-            <img src={expert.image} alt={expert.name} className="size-full object-cover" />
+            <img src={expert.image} alt={expert.name} className="size-full object-cover object-[50%_18%]" />
           </div>
 
           <div>
