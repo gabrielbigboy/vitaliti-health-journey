@@ -339,3 +339,7 @@
     transform: none !important;
   }
 }
+
+#lovable-badge {
+  display: none !important;
+}
