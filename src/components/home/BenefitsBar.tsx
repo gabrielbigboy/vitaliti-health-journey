@@ -1,33 +1,54 @@
 import { HeartPulse, Salad, Stethoscope, Smartphone } from "lucide-react";
 import { Container } from "@/components/ui/section";
 
-const items = [
-  { label: "Avaliação de saúde", Icon: HeartPulse },
-  { label: "Nutrição e novos hábitos", Icon: Salad },
-  { label: "Acompanhamento profissional", Icon: Stethoscope },
-  { label: "Jornada digital", Icon: Smartphone },
+/**
+ * Os quatro itens são etapas reais da jornada, nesta ordem — por isso a
+ * numeração clínica e as réguas de separação, e não chips soltos.
+ */
+const steps = [
+  { step: "01", label: "Avaliação de saúde", detail: "Questionário e histórico", Icon: HeartPulse },
+  { step: "02", label: "Nutrição e hábitos", detail: "Plano alimentar guiado", Icon: Salad },
+  {
+    step: "03",
+    label: "Acompanhamento profissional",
+    detail: "Time clínico dedicado",
+    Icon: Stethoscope,
+  },
+  { step: "04", label: "Jornada digital", detail: "Tudo no app, sempre", Icon: Smartphone },
 ];
 
 export function BenefitsBar() {
   return (
     <div className="border-y border-border bg-surface">
-      <Container className="py-5">
-        <ul
-          className="flex snap-x snap-mandatory gap-3 overflow-x-auto md:grid md:grid-cols-4 md:gap-4 md:overflow-visible [&::-webkit-scrollbar]:hidden"
+      <Container className="py-6 md:py-7">
+        <ol
+          className="flex snap-x snap-mandatory gap-4 overflow-x-auto md:grid md:grid-cols-4 md:gap-0 md:overflow-visible [&::-webkit-scrollbar]:hidden"
           data-reveal="stagger"
         >
-          {items.map(({ label, Icon }) => (
+          {steps.map(({ step, label, detail, Icon }, index) => (
             <li
               key={label}
-              className="interactive-card flex min-w-[70%] shrink-0 snap-center items-center gap-3 rounded-full border border-transparent bg-muted/50 px-4 py-3 md:min-w-0 md:bg-muted/40"
+              className={[
+                "group relative min-w-[68%] shrink-0 snap-center pb-1 md:min-w-0 md:px-6",
+                index === 0 ? "md:pl-0" : "",
+                index > 0 ? "md:border-l md:border-border" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
             >
-              <span className="inline-flex size-9 items-center justify-center rounded-full bg-primary-soft text-primary">
-                <Icon className="size-4.5" />
-              </span>
-              <span className="text-sm font-semibold text-foreground">{label}</span>
+              <div className="flex items-center gap-2 font-mono text-[0.68rem] tracking-[0.18em] text-muted-foreground uppercase">
+                <span className="text-primary">{step}</span>
+                <span
+                  aria-hidden="true"
+                  className="h-px flex-1 bg-border transition-colors duration-300 group-hover:bg-primary/40"
+                />
+                <Icon className="size-4 text-primary" aria-hidden="true" />
+              </div>
+              <p className="mt-2 text-sm font-semibold text-foreground md:text-[0.95rem]">{label}</p>
+              <p className="mt-0.5 text-xs text-muted-foreground">{detail}</p>
             </li>
           ))}
-        </ul>
+        </ol>
       </Container>
     </div>
   );
