@@ -183,7 +183,8 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    font-optical-sizing: auto;
+    letter-spacing: -0.025em;
     text-wrap: balance;
   }
 
