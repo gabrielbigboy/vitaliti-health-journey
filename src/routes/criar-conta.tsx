@@ -61,17 +61,25 @@ function CriarConta() {
   const [terms, setTerms] = useState(false);
   const [healthConsent, setHealthConsent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [startedAt] = useState(() => Date.now());
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const raw = Object.fromEntries(new FormData(event.currentTarget)) as Record<string, string>;
+    const guard = checkFormGuard({ key: "criar-conta", data: raw, startedAt });
+    if (!guard.ok) {
+      toast.error(guard.reason);
+      return;
+    }
+    const clean = stripHoneypot(raw);
     const data = {
-      ...raw,
-      cpf: (raw["cpf"] ?? "").replace(/\D/g, ""),
-      celular: (raw["celular"] ?? "").replace(/\D/g, ""),
-      whatsapp: (raw["whatsapp"] ?? "").replace(/\D/g, ""),
+      ...clean,
+      cpf: (clean["cpf"] ?? "").replace(/\D/g, ""),
+      celular: (clean["celular"] ?? "").replace(/\D/g, ""),
+      whatsapp: (clean["whatsapp"] ?? "").replace(/\D/g, ""),
     };
     const parsed = schema.safeParse(data);
+
     if (!parsed.success) {
       const next: Record<string, string> = {};
       for (const issue of parsed.error.issues) next[String(issue.path[0])] = issue.message;
