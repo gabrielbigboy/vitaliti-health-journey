@@ -39,7 +39,12 @@ export function Section({
 }
 
 export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
-  return <p className={cn("text-eyebrow text-primary", className)}>{children}</p>;
+  return (
+    <p className={cn("clinical-note", className)} style={{ color: "var(--color-primary)" }}>
+      <span className="clinical-note-rule" aria-hidden />
+      {children}
+    </p>
+  );
 }
 
 export function SectionHeading({
