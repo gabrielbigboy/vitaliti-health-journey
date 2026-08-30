@@ -389,11 +389,36 @@
   transition-delay: 350ms;
 }
 
+/* ---- Microinterações de card: hover, foco e carregamento ---- */
 .interactive-card {
+  position: relative;
+  isolation: isolate;
   transition:
     transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 350ms ease,
     border-color 350ms ease;
+}
+
+/* Brilho suave que acompanha o hover, puramente decorativo. */
+.interactive-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--color-primary) 10%, transparent),
+    transparent 55%
+  );
+  transition: opacity 350ms ease;
+}
+
+/* Zoom discreto em imagens/vídeos dentro do card. */
+.interactive-card :is(img, video) {
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (hover: hover) {
@@ -402,7 +427,77 @@
     border-color: color-mix(in oklch, var(--color-primary) 28%, var(--color-border));
     box-shadow: var(--shadow-lift);
   }
+
+  .interactive-card:hover::after {
+    opacity: 1;
+  }
+
+  .interactive-card:hover :is(img, video) {
+    transform: scale(1.04);
+  }
 }
+
+/* Feedback tátil ao pressionar cards clicáveis. */
+.interactive-card:is(a, button):active,
+.interactive-card:has(> a:active) {
+  transform: translateY(-1px) scale(0.995);
+}
+
+/* Foco por teclado: anel visível e elevação equivalente ao hover. */
+.interactive-card:focus-visible,
+.interactive-card:has(:focus-visible) {
+  outline: none;
+  transform: translateY(-5px);
+  border-color: color-mix(in oklch, var(--color-primary) 45%, var(--color-border));
+  box-shadow:
+    0 0 0 2px var(--color-background),
+    0 0 0 4px color-mix(in oklch, var(--color-primary) 70%, transparent),
+    var(--shadow-lift);
+}
+
+.interactive-card:has(:focus-visible)::after {
+  opacity: 1;
+}
+
+/* Estado de carregamento: brilho deslizante + conteúdo inerte. */
+.card-loading {
+  position: relative;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.card-loading > * {
+  opacity: 0.45;
+  filter: blur(0.4px);
+  transition: opacity 200ms ease;
+}
+
+.card-loading::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    color-mix(in oklch, var(--color-primary) 12%, transparent) 50%,
+    transparent 80%
+  );
+  background-size: 220% 100%;
+  animation: card-shimmer 1.4s linear infinite;
+}
+
+@keyframes card-shimmer {
+  from {
+    background-position: 180% 0;
+  }
+  to {
+    background-position: -80% 0;
+  }
+}
+
 
 /* ---- Transições de página (entrada e saída) ---- */
 @keyframes page-enter {
@@ -589,4 +684,19 @@ html {
   filter: none !important;
   animation: none !important;
   transition: none !important;
+}
+
+/* Microinterações de card respeitam "reduzir movimento". */
+@media (prefers-reduced-motion: reduce) {
+  .interactive-card,
+  .interactive-card:hover,
+  .interactive-card:focus-visible,
+  .interactive-card:has(:focus-visible),
+  .interactive-card :is(img, video) {
+    transform: none !important;
+  }
+
+  .card-loading::before {
+    animation: none !important;
+  }
 }
