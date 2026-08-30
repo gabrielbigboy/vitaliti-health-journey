@@ -62,7 +62,7 @@ export function Hero() {
             </ul>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className="px-7">
+              <Button asChild size="lg" className="pulse-cta px-7">
                 <Link
                   to="/avaliacao"
                   onClick={() => track("cta_click", { location: "hero_primary" })}

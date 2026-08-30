@@ -35,7 +35,7 @@ export function FinalCTA({
               {text}
             </p>
             <div>
-              <Button asChild size="lg" variant="secondary" className="px-8 shadow-soft">
+              <Button asChild size="lg" variant="secondary" className="pulse-cta pulse-cta-light px-8 shadow-soft">
                 <Link to="/avaliacao" onClick={() => track("cta_click", { location })}>
                   Começar minha avaliação
                   <span className="button-arrow" aria-hidden>

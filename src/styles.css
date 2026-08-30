@@ -422,3 +422,113 @@
 #lovable-badge {
   display: none !important;
 }
+
+/* ---- Movimento: pulso e brilho nos CTAs ---- */
+@keyframes cta-pulse-ring {
+  0% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(1.22);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.22);
+  }
+}
+
+@keyframes cta-breathe {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -1.5px, 0) scale(1.018);
+  }
+}
+
+@keyframes cta-shimmer {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  55%,
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+  }
+}
+
+@keyframes dot-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.7);
+  }
+}
+
+@utility pulse-cta {
+  position: relative;
+  isolation: isolate;
+  animation: cta-breathe 3.2s ease-in-out infinite;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    box-shadow: 0 0 0 2px color-mix(in oklch, var(--primary) 45%, transparent);
+    animation: cta-pulse-ring 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    pointer-events: none;
+  }
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@utility pulse-cta-light {
+  &::after {
+    box-shadow: 0 0 0 2px color-mix(in oklch, var(--primary-foreground) 55%, transparent);
+  }
+}
+
+@utility shimmer-cta {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 45%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklch, white 34%, transparent),
+      transparent
+    );
+    transform: translateX(-120%) skewX(-18deg);
+    pointer-events: none;
+  }
+
+  &:hover::before {
+    animation: cta-shimmer 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@utility live-dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: currentColor;
+  animation: dot-pulse 1.6s ease-in-out infinite;
+}
