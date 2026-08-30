@@ -9,8 +9,13 @@ export function ExpertCard({ expert }: { expert: Expert }) {
       params={{ slug: expert.slug }}
       className="interactive-card group flex flex-col rounded-[2rem] border border-border bg-surface p-5"
     >
-      <div className="aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-muted">
-        <img src={expert.image} alt={expert.name} className="size-full object-cover" loading="lazy" />
+      <div className="aspect-[3/4] overflow-hidden rounded-[1.5rem] bg-muted">
+        <img
+          src={expert.image}
+          alt={expert.name}
+          className="size-full object-cover object-[50%_18%]"
+          loading="lazy"
+        />
       </div>
       <span className="clinical-chip mt-4 w-fit">
         {expert.categoryLabel}
