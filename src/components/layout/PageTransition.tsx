@@ -9,8 +9,9 @@ import { useRouterState } from "@tanstack/react-router";
  */
 export function PageTransition({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const isPending = useRouterState({ select: (s) => s.status === "pending" });
+  const isLoading = useRouterState({ select: (s) => s.isLoading || s.isTransitioning });
   const [reduced, setReduced] = useState(false);
+  const [leaving, setLeaving] = useState(false);
   const previousPath = useRef(pathname);
 
   useEffect(() => {
@@ -20,6 +21,16 @@ export function PageTransition({ children }: { children: ReactNode }) {
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
   }, []);
+
+  // Só esmaece se a próxima rota demorar; navegações instantâneas não piscam.
+  useEffect(() => {
+    if (!isLoading || reduced) {
+      setLeaving(false);
+      return;
+    }
+    const timer = window.setTimeout(() => setLeaving(true), 140);
+    return () => window.clearTimeout(timer);
+  }, [isLoading, reduced]);
 
   // Volta ao topo a cada troca de rota (sem "pulo" quando há âncora).
   useEffect(() => {
@@ -31,14 +42,11 @@ export function PageTransition({ children }: { children: ReactNode }) {
 
   return (
     <div
-      className={[
-        "page-transition",
-        isPending && !reduced ? "is-leaving" : "",
-        reduced ? "motion-off" : "",
-      ]
+      className={["page-transition", leaving ? "is-leaving" : "", reduced ? "motion-off" : ""]
         .filter(Boolean)
         .join(" ")}
     >
+
       <div key={reduced ? "static" : pathname} className="page-transition-inner">
         {children}
       </div>
