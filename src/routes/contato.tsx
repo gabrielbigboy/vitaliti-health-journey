@@ -33,11 +33,18 @@ const schema = z.object({
 function Contato() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
+  const [startedAt] = useState(() => Date.now());
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = Object.fromEntries(new FormData(event.currentTarget));
-    const parsed = schema.safeParse(data);
+    const form = event.currentTarget;
+    const raw = Object.fromEntries(new FormData(form)) as Record<string, unknown>;
+    const guard = checkFormGuard({ key: "contato", data: raw, startedAt });
+    if (!guard.ok) {
+      toast.error(guard.reason);
+      return;
+    }
+    const parsed = schema.safeParse(stripHoneypot(raw));
     if (!parsed.success) {
       const next: Record<string, string> = {};
       for (const issue of parsed.error.issues) next[String(issue.path[0])] = issue.message;
@@ -53,7 +60,7 @@ function Contato() {
         description:
           "O envio será conectado ao backend na próxima etapa do projeto.",
       });
-      event.currentTarget?.reset?.();
+      form.reset();
     }, 500);
   };
 
