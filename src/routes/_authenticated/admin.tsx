@@ -72,7 +72,35 @@ const leadColumns = [
 ];
 
 function Admin() {
+  const { loading, isAdmin } = useRoles();
+
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <p className="text-sm text-muted-foreground">Verificando permissões...</p>
+      </div>
+    );
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background px-5">
+        <div className="max-w-md text-center">
+          <ShieldAlert className="mx-auto size-8 text-destructive" />
+          <h1 className="mt-4 text-xl font-semibold text-foreground">Acesso restrito</h1>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Esta área é exclusiva da equipe interna da Vitaliti Saúde.
+          </p>
+          <Link to="/app" className="mt-6 inline-block text-sm font-medium text-primary underline underline-offset-4">
+            Voltar para minha área
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
+
     <div className="min-h-screen bg-background">
       <header className="border-b border-border bg-surface">
         <Container className="flex h-16 items-center justify-between">
