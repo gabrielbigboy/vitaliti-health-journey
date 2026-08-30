@@ -53,7 +53,7 @@ function Planos() {
               )}
             >
               {plan.highlighted ? (
-                <span className="mb-4 inline-flex w-fit rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
+                <span className="clinical-chip clinical-chip-solid mb-4 w-fit">
                   Mais escolhido
                 </span>
               ) : null}

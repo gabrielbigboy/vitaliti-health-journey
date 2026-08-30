@@ -61,7 +61,7 @@ function BlogIndex() {
                 type="button"
                 onClick={() => setCategory(c)}
                 className={cn(
-                  "rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors",
+                  "clinical-filter",
                   category === c
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-surface text-muted-foreground hover:bg-accent hover:text-accent-foreground",
@@ -81,7 +81,7 @@ function BlogIndex() {
               params={{ slug: post.slug }}
               className="group flex flex-col rounded-3xl border border-border bg-surface p-6 transition-all hover:-translate-y-1 hover:shadow-card"
             >
-              <span className="inline-flex w-fit rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold text-primary">
+              <span className="clinical-chip w-fit">
                 {post.category}
               </span>
               <h2 className="mt-4 text-lg font-semibold text-foreground">{post.title}</h2>

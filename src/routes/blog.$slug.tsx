@@ -79,7 +79,7 @@ function PostPage() {
   return (
     <SiteLayout>
       <Section tone="default" containerClassName="max-w-3xl">
-        <span className="inline-flex rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold text-primary">
+        <span className="clinical-chip">
           {post.category}
         </span>
         <h1 className="text-section-title mt-4 text-foreground">{post.title}</h1>

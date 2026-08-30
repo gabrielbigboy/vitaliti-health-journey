@@ -12,7 +12,7 @@ export function ExpertCard({ expert }: { expert: Expert }) {
       <div className="aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-muted">
         <img src={expert.image} alt={expert.name} className="size-full object-cover" loading="lazy" />
       </div>
-      <span className="mt-4 inline-flex w-fit rounded-full bg-primary-soft px-2.5 py-1 text-[0.6875rem] font-semibold text-primary">
+      <span className="clinical-chip mt-4 w-fit">
         {expert.categoryLabel}
       </span>
       <div className="mt-3 flex items-start justify-between gap-3">

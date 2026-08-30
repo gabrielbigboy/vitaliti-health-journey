@@ -101,7 +101,7 @@ export function Hero() {
               <div
                 key={label}
                 style={{ animationDelay: `${index * -1.35}s` }}
-                className={`soft-float absolute ${className} flex items-center gap-2 rounded-full border border-border bg-surface/95 px-3.5 py-2.5 text-xs font-semibold text-foreground shadow-float backdrop-blur`}
+                className={`soft-float absolute ${className} flex items-center gap-2 rounded-md border border-border bg-surface/95 px-3.5 py-2.5 font-mono text-[0.6875rem] font-medium tracking-[0.1em] text-foreground uppercase shadow-float backdrop-blur`}
               >
                 <span className="inline-flex size-7 items-center justify-center rounded-full bg-primary-soft text-primary">
                   <Icon className="size-3.5" />

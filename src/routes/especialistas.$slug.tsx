@@ -58,7 +58,7 @@ function ExpertPage() {
           </div>
 
           <div>
-            <span className="inline-flex rounded-full bg-primary-soft px-3 py-1 text-xs font-semibold text-primary">
+            <span className="clinical-chip">
               {expert.categoryLabel}
             </span>
             <h1 className="text-section-title mt-4 text-foreground">{expert.name}</h1>
@@ -75,7 +75,7 @@ function ExpertPage() {
             <h2 className="mt-8 text-lg font-semibold text-foreground">Áreas de atuação</h2>
             <ul className="mt-3 flex flex-wrap gap-2">
               {expert.areas.map((area) => (
-                <li key={area} className="rounded-full bg-muted px-3 py-1.5 text-sm text-muted-foreground">
+                <li key={area} className="clinical-chip clinical-chip-muted">
                   {area}
                 </li>
               ))}
