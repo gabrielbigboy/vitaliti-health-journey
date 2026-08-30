@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { supabase } from "@/integrations/supabase/client";
+
 import { z } from "zod";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -54,27 +56,30 @@ const fields = [
 ];
 
 function CriarConta() {
+  const navigate = useNavigate();
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [terms, setTerms] = useState(false);
   const [healthConsent, setHealthConsent] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [startedAt] = useState(() => Date.now());
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const rawAll = Object.fromEntries(new FormData(event.currentTarget)) as Record<string, string>;
-    const guard = checkFormGuard({ key: "criar-conta", data: rawAll, startedAt });
+    const raw = Object.fromEntries(new FormData(event.currentTarget)) as Record<string, string>;
+    const guard = checkFormGuard({ key: "criar-conta", data: raw, startedAt });
     if (!guard.ok) {
       toast.error(guard.reason);
       return;
     }
-    const raw = stripHoneypot(rawAll);
+    const clean = stripHoneypot(raw);
     const data = {
-      ...raw,
-      cpf: (raw["cpf"] ?? "").replace(/\D/g, ""),
-      celular: (raw["celular"] ?? "").replace(/\D/g, ""),
-      whatsapp: (raw["whatsapp"] ?? "").replace(/\D/g, ""),
+      ...clean,
+      cpf: (clean["cpf"] ?? "").replace(/\D/g, ""),
+      celular: (clean["celular"] ?? "").replace(/\D/g, ""),
+      whatsapp: (clean["whatsapp"] ?? "").replace(/\D/g, ""),
     };
     const parsed = schema.safeParse(data);
+
     if (!parsed.success) {
       const next: Record<string, string> = {};
       for (const issue of parsed.error.issues) next[String(issue.path[0])] = issue.message;
@@ -86,11 +91,34 @@ function CriarConta() {
       return;
     }
     setErrors({});
-    track("signup_complete");
-    toast.success("Cadastro validado", {
-      description: "A criação de conta será conectada à autenticação na próxima etapa.",
+    setLoading(true);
+    const { error } = await supabase.auth.signUp({
+      email: parsed.data.email,
+      password: parsed.data.senha,
+      options: {
+        emailRedirectTo: `${window.location.origin}/app`,
+        data: {
+          first_name: parsed.data.nome,
+          last_name: parsed.data.sobrenome,
+        },
+      },
     });
+    setLoading(false);
+    if (error) {
+      toast.error(
+        error.message.toLowerCase().includes("registered")
+          ? "Este e-mail já possui cadastro."
+          : "Não foi possível criar a conta agora.",
+      );
+      return;
+    }
+    track("signup_complete");
+    toast.success("Conta criada", {
+      description: "Confirme seu e-mail, se solicitado, para acessar sua área.",
+    });
+    navigate({ to: "/entrar" });
   };
+
 
   return (
     <div className="min-h-screen bg-background py-10">
@@ -151,7 +179,7 @@ function CriarConta() {
             </label>
           </div>
 
-          <Button type="submit" size="lg" className="mt-7 w-full rounded-2xl">
+          <Button type="submit" size="lg" className="mt-7 w-full rounded-2xl" disabled={loading}>
             Criar conta
           </Button>
 

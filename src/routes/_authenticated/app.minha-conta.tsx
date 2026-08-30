@@ -3,7 +3,7 @@ import { AppCard, AppHeading, EmptyState } from "@/components/app/AppSection";
 import { Button } from "@/components/ui/button";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/app/minha-conta")({
+export const Route = createFileRoute("/_authenticated/app/minha-conta")({
   head: () =>
     pageHead({
       title: "Minha conta",

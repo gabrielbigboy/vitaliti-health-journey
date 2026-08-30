@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AppCard, AppHeading, EmptyState } from "@/components/app/AppSection";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/app/documentos")({
+export const Route = createFileRoute("/_authenticated/app/documentos")({
   head: () =>
     pageHead({
       title: "Documentos",

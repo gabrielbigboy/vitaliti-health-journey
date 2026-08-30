@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { pageHead } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/app/mensagens")({
+export const Route = createFileRoute("/_authenticated/app/mensagens")({
   head: () =>
     pageHead({
       title: "Mensagens",

@@ -4,7 +4,7 @@ import { AppCard, AppHeading, EmptyState } from "@/components/app/AppSection";
 import { Button } from "@/components/ui/button";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/app/")({
+export const Route = createFileRoute("/_authenticated/app/")({
   head: () =>
     pageHead({
       title: "Minha jornada",

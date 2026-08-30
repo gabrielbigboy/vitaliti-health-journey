@@ -1,4 +1,7 @@
-import { Outlet, createFileRoute, Link } from "@tanstack/react-router";
+import { Outlet, createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useQueryClient } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+
 import {
   Home,
   Route as RouteIcon,
@@ -12,7 +15,7 @@ import {
 } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 
-export const Route = createFileRoute("/app")({
+export const Route = createFileRoute("/_authenticated/app")({
   component: AppLayout,
 });
 
@@ -32,7 +35,18 @@ const extraNav = [
 ] as const;
 
 function AppLayout() {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  const signOut = async () => {
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    await supabase.auth.signOut();
+    navigate({ to: "/entrar", replace: true });
+  };
+
   return (
+
     <div className="min-h-screen bg-background">
       <aside className="fixed inset-y-0 left-0 hidden w-64 flex-col border-r border-border bg-sidebar p-5 lg:flex">
         <Logo />
@@ -50,9 +64,17 @@ function AppLayout() {
             </Link>
           ))}
         </nav>
-        <Link to="/" className="mt-4 text-xs text-muted-foreground hover:text-foreground">
+        <button
+          type="button"
+          onClick={signOut}
+          className="mt-4 text-left text-xs font-medium text-muted-foreground hover:text-foreground"
+        >
+          Sair da conta
+        </button>
+        <Link to="/" className="mt-2 text-xs text-muted-foreground hover:text-foreground">
           ← Voltar ao site
         </Link>
+
       </aside>
 
       <div className="lg:pl-64">

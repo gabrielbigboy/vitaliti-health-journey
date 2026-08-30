@@ -12,7 +12,9 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { siteConfig, whatsappHref } from "@/lib/site-config";
 import { pageHead } from "@/lib/seo";
-import { track } from "@/lib/tracking";
+import { track, getAttribution } from "@/lib/tracking";
+import { submitLead } from "@/lib/leads.functions";
+
 import { checkFormGuard, stripHoneypot } from "@/lib/form-guard";
 import { Honeypot } from "@/components/ui/honeypot";
 
@@ -37,7 +39,7 @@ function Contato() {
   const [loading, setLoading] = useState(false);
   const [startedAt] = useState(() => Date.now());
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
     const raw = Object.fromEntries(new FormData(form)) as Record<string, unknown>;
@@ -55,16 +57,36 @@ function Contato() {
     }
     setErrors({});
     setLoading(true);
-    track("lead_created", { source: "contato" });
-    window.setTimeout(() => {
-      setLoading(false);
-      toast.success("Mensagem registrada", {
-        description:
-          "O envio será conectado ao backend na próxima etapa do projeto.",
+    try {
+      const result = await submitLead({
+        data: {
+          source: "contato",
+          name: parsed.data.name,
+          email: parsed.data.email,
+          message: parsed.data.message,
+          utm: getAttribution() as Record<string, string>,
+        },
+      });
+      if (!result.ok) {
+        toast.error(
+          result.error === "rate_limited"
+            ? "Muitas mensagens enviadas. Tente novamente em alguns minutos."
+            : "Não foi possível enviar agora. Tente novamente.",
+        );
+        return;
+      }
+      track("lead_created", { source: "contato" });
+      toast.success("Mensagem enviada", {
+        description: "Nossa equipe responderá em horário comercial.",
       });
       form.reset();
-    }, 500);
+    } catch {
+      toast.error("Não foi possível enviar agora. Tente novamente.");
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <SiteLayout>

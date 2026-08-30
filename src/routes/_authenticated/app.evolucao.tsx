@@ -17,7 +17,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/app/evolucao")({
+export const Route = createFileRoute("/_authenticated/app/evolucao")({
   head: () =>
     pageHead({
       title: "Evolução",
