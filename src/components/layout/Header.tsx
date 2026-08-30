@@ -59,7 +59,7 @@ export function Header() {
           <Button asChild variant="ghost" size="sm">
             <Link to="/entrar">Entrar</Link>
           </Button>
-          <Button asChild size="sm">
+          <Button asChild size="sm" className="pulse-cta">
             <Link to="/avaliacao" onClick={() => track("cta_click", { location: "header" })}>
               Começar minha avaliação
               <ArrowRight className="size-3.5" />
