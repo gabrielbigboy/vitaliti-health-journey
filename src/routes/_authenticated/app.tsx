@@ -32,7 +32,18 @@ const extraNav = [
 ] as const;
 
 function AppLayout() {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  const signOut = async () => {
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    await supabase.auth.signOut();
+    navigate({ to: "/entrar", replace: true });
+  };
+
   return (
+
     <div className="min-h-screen bg-background">
       <aside className="fixed inset-y-0 left-0 hidden w-64 flex-col border-r border-border bg-sidebar p-5 lg:flex">
         <Logo />
