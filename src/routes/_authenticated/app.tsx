@@ -50,9 +50,17 @@ function AppLayout() {
             </Link>
           ))}
         </nav>
-        <Link to="/" className="mt-4 text-xs text-muted-foreground hover:text-foreground">
+        <button
+          type="button"
+          onClick={signOut}
+          className="mt-4 text-left text-xs font-medium text-muted-foreground hover:text-foreground"
+        >
+          Sair da conta
+        </button>
+        <Link to="/" className="mt-2 text-xs text-muted-foreground hover:text-foreground">
           ← Voltar ao site
         </Link>
+
       </aside>
 
       <div className="lg:pl-64">
