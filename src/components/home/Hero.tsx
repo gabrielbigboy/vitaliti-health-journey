@@ -3,7 +3,8 @@ import { Check, ArrowRight, Activity, Wifi, ClipboardList } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/section";
 import { track } from "@/lib/tracking";
-import heroImage from "@/assets/hero-vitaliti.jpg";
+import heroVideo from "@/assets/hero-vitaliti.mp4.asset.json";
+import heroPoster from "@/assets/hero-vitaliti-poster.jpg.asset.json";
 
 const benefits = [
   "Avaliação individualizada",
