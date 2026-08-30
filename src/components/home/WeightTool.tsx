@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { Section } from "@/components/ui/section";
+import { Eyebrow, Section } from "@/components/ui/section";
 import { bmiClassification } from "@/lib/content";
 import { siteConfig } from "@/lib/site-config";
 import { track } from "@/lib/tracking";
@@ -25,7 +25,7 @@ export function WeightTool() {
     <Section tone="soft">
       <div className="grid items-center gap-10 lg:grid-cols-2">
         <div data-reveal>
-          <p className="text-eyebrow text-primary">Ferramenta informativa</p>
+          <Eyebrow>Ferramenta informativa</Eyebrow>
           <h2 className="text-section-title mt-3 text-primary-deep">
             Descubra uma referência para sua meta de peso
           </h2>

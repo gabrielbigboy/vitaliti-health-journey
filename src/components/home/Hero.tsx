@@ -35,9 +35,9 @@ export function Hero() {
       <Container className="relative">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div data-reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm font-medium text-muted-foreground">
-              <span className="size-1.5 rounded-full bg-primary" />
-              HealthTech brasileira • saúde acompanhada de perto
+            <span className="clinical-note">
+              <span className="clinical-note-rule" aria-hidden />
+              HealthTech brasileira — acompanhamento contínuo
             </span>
 
             <h1 className="text-display mt-6 text-foreground">

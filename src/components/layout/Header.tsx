@@ -47,7 +47,7 @@ export function Header() {
             <Link
               key={item.to}
               to={item.to}
-              className="rounded-full px-3.5 py-2 text-base font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="whitespace-nowrap rounded-full px-3 py-2 text-[0.95rem] font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
               activeProps={{ className: "text-foreground bg-accent" }}
             >
               {item.label}
