@@ -27,6 +27,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { pageHead } from "@/lib/seo";
+import { useRoles } from "@/lib/auth";
+
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () =>
