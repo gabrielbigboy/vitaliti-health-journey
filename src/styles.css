@@ -685,3 +685,18 @@ html {
   animation: none !important;
   transition: none !important;
 }
+
+/* Microinterações de card respeitam "reduzir movimento". */
+@media (prefers-reduced-motion: reduce) {
+  .interactive-card,
+  .interactive-card:hover,
+  .interactive-card:focus-visible,
+  .interactive-card:has(:focus-visible),
+  .interactive-card :is(img, video) {
+    transform: none !important;
+  }
+
+  .card-loading::before {
+    animation: none !important;
+  }
+}
