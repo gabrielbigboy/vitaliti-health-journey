@@ -2,10 +2,9 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { PageHero } from "@/components/layout/PageHero";
-import { Section, PlaceholderNote } from "@/components/ui/section";
+import { Section } from "@/components/ui/section";
 import { ExpertCard } from "@/components/experts/ExpertCard";
 import { experts, expertFilters } from "@/lib/content";
-import { siteConfig } from "@/lib/site-config";
 import { pageHead } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
@@ -56,8 +55,6 @@ function EspecialistasIndex() {
             <ExpertCard key={expert.slug} expert={expert} />
           ))}
         </div>
-
-        <PlaceholderNote>{siteConfig.disclaimers.placeholder}</PlaceholderNote>
       </Section>
     </SiteLayout>
   );

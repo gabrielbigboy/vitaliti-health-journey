@@ -1,11 +1,9 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
-import { UserRound } from "lucide-react";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { PageHero } from "@/components/layout/PageHero";
-import { Section, PlaceholderNote } from "@/components/ui/section";
+import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { experts } from "@/lib/content";
-import { siteConfig } from "@/lib/site-config";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/especialistas/$slug")({
@@ -55,11 +53,8 @@ function ExpertPage() {
     <SiteLayout>
       <Section tone="default">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="flex aspect-[4/5] items-center justify-center rounded-3xl border border-dashed border-border bg-muted/60 text-muted-foreground">
-            <div className="flex flex-col items-center gap-2">
-              <UserRound className="size-10" />
-              <span className="text-xs font-semibold tracking-wide uppercase">Foto a cadastrar</span>
-            </div>
+          <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-muted">
+            <img src={expert.image} alt={expert.name} className="size-full object-cover" />
           </div>
 
           <div>
@@ -70,8 +65,12 @@ function ExpertPage() {
             <p className="mt-2 text-base text-muted-foreground">{expert.specialty}</p>
             <p className="mt-1 text-sm text-muted-foreground">{expert.registry}</p>
 
-            <h2 className="mt-8 text-lg font-semibold text-foreground">Biografia</h2>
-            <p className="mt-2 text-base leading-relaxed text-muted-foreground">{expert.bio}</p>
+            {expert.bio ? (
+              <>
+                <h2 className="mt-8 text-lg font-semibold text-foreground">Biografia</h2>
+                <p className="mt-2 text-base leading-relaxed text-muted-foreground">{expert.bio}</p>
+              </>
+            ) : null}
 
             <h2 className="mt-8 text-lg font-semibold text-foreground">Áreas de atuação</h2>
             <ul className="mt-3 flex flex-wrap gap-2">
@@ -81,8 +80,6 @@ function ExpertPage() {
                 </li>
               ))}
             </ul>
-
-            <PlaceholderNote>{siteConfig.disclaimers.placeholder}</PlaceholderNote>
 
             <Button asChild size="lg" className="mt-8 rounded-2xl">
               <Link to="/avaliacao">Começar minha avaliação</Link>
