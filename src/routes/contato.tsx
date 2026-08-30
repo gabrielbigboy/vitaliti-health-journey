@@ -12,7 +12,9 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { siteConfig, whatsappHref } from "@/lib/site-config";
 import { pageHead } from "@/lib/seo";
-import { track } from "@/lib/tracking";
+import { track, getAttribution } from "@/lib/tracking";
+import { submitLead } from "@/lib/leads.functions";
+
 import { checkFormGuard, stripHoneypot } from "@/lib/form-guard";
 import { Honeypot } from "@/components/ui/honeypot";
 
