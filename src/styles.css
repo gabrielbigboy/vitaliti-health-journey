@@ -581,3 +581,12 @@ html {
   background: currentColor;
   animation: dot-pulse 1.6s ease-in-out infinite;
 }
+
+/* Desliga transições de página quando "reduzir movimento" está ativo. */
+.page-transition.motion-off,
+.page-transition.motion-off .page-transition-inner {
+  opacity: 1 !important;
+  filter: none !important;
+  animation: none !important;
+  transition: none !important;
+}
