@@ -9,7 +9,7 @@ export function ScrollMotion() {
 
     if (reduceMotion || !("IntersectionObserver" in window)) {
       document.querySelectorAll<HTMLElement>(selector).forEach((element) => {
-        element.dataset.revealVisible = "true";
+        element.dataset["revealVisible"] = "true";
       });
       return;
     }
@@ -22,7 +22,7 @@ export function ScrollMotion() {
           if (!entry.isIntersecting) return;
 
           const element = entry.target as HTMLElement;
-          element.dataset.revealVisible = "true";
+          element.dataset["revealVisible"] = "true";
           observer.unobserve(element);
         });
       },
@@ -38,7 +38,7 @@ export function ScrollMotion() {
 
           if (!isVisible) return;
 
-          element.dataset.revealVisible = "true";
+          element.dataset["revealVisible"] = "true";
           observer.unobserve(element);
         });
     };
@@ -53,7 +53,7 @@ export function ScrollMotion() {
       scope
         .querySelectorAll<HTMLElement>(`${selector}:not([data-reveal-ready])`)
         .forEach((element) => {
-          element.dataset.revealReady = "true";
+          element.dataset["revealReady"] = "true";
           observer.observe(element);
         });
     };
@@ -67,8 +67,8 @@ export function ScrollMotion() {
       mutations.forEach((mutation) => {
         mutation.addedNodes.forEach((node) => {
           if (!(node instanceof HTMLElement)) return;
-          if (node.matches(selector) && !node.dataset.revealReady) {
-            node.dataset.revealReady = "true";
+          if (node.matches(selector) && !node.dataset["revealReady"]) {
+            node.dataset["revealReady"] = "true";
             observer.observe(node);
           }
           observe(node);
