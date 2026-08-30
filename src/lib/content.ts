@@ -1,10 +1,16 @@
 /**
- * Conteúdo demonstrativo (PLACEHOLDER).
+ * Conteúdo do site.
  *
- * Estes dados existem apenas para o ambiente de desenvolvimento e devem ser
- * substituídos por registros reais vindos do CMS/banco de dados.
- * Nenhum profissional, registro, resultado clínico ou depoimento aqui é real.
+ * A maior parte dos dados é demonstrativa e deve ser substituída por registros
+ * administráveis. Os casos de antes e depois são mantidos sem identificação.
  */
+
+import case01Before from "@/assets/results/caso-01-antes.webp";
+import case01After from "@/assets/results/caso-01-depois.webp";
+import case02Before from "@/assets/results/caso-02-antes.webp";
+import case02After from "@/assets/results/caso-02-depois.webp";
+import case03Before from "@/assets/results/caso-03-antes.webp";
+import case03After from "@/assets/results/caso-03-depois.webp";
 
 export const PLACEHOLDER = true;
 
@@ -139,36 +145,41 @@ export type Story = {
   outcome: string;
   quote: string;
   category: "emagrecimento" | "nutricao" | "habitos" | "saude-metabolica";
+  beforeImage?: string;
+  afterImage?: string;
 };
 
-/** PLACEHOLDER — nenhum caso real. Substituir por histórias autorizadas. */
+/** Casos sem identificação pessoal. Resultados individuais podem variar. */
 export const stories: Story[] = [
   {
-    id: "story-placeholder-1",
-    name: "História demonstrativa 1",
-    duration: "Duração a informar",
-    outcome: "Resultado a informar",
-    quote:
-      "Espaço reservado para o depoimento real da pessoa, com autorização de uso.",
+    id: "case-01",
+    name: "Caso 01",
+    duration: "Período de acompanhamento não informado",
+    outcome: "Resultado individual",
+    quote: "Imagens de antes e depois compartilhadas pela Vitaliti Saúde.",
     category: "emagrecimento",
+    beforeImage: case01Before,
+    afterImage: case01After,
   },
   {
-    id: "story-placeholder-2",
-    name: "História demonstrativa 2",
-    duration: "Duração a informar",
-    outcome: "Resultado a informar",
-    quote:
-      "Espaço reservado para o depoimento real da pessoa, com autorização de uso.",
-    category: "nutricao",
+    id: "case-02",
+    name: "Caso 02",
+    duration: "Período de acompanhamento não informado",
+    outcome: "Resultado individual",
+    quote: "Imagens de antes e depois compartilhadas pela Vitaliti Saúde.",
+    category: "emagrecimento",
+    beforeImage: case02Before,
+    afterImage: case02After,
   },
   {
-    id: "story-placeholder-3",
-    name: "História demonstrativa 3",
-    duration: "Duração a informar",
-    outcome: "Resultado a informar",
-    quote:
-      "Espaço reservado para o depoimento real da pessoa, com autorização de uso.",
-    category: "habitos",
+    id: "case-03",
+    name: "Caso 03",
+    duration: "Período de acompanhamento não informado",
+    outcome: "Resultado individual",
+    quote: "Imagens de antes e depois compartilhadas pela Vitaliti Saúde.",
+    category: "emagrecimento",
+    beforeImage: case03Before,
+    afterImage: case03After,
   },
 ];
 

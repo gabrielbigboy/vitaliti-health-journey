@@ -1,4 +1,4 @@
-import { ImageIcon, Quote } from "lucide-react";
+import { Quote } from "lucide-react";
 import { Section, SectionHeading, PlaceholderNote } from "@/components/ui/section";
 import { stories } from "@/lib/content";
 import { siteConfig } from "@/lib/site-config";
@@ -22,15 +22,24 @@ export function Stories() {
             className="interactive-card flex min-w-[85%] shrink-0 snap-center flex-col rounded-[2rem] border border-border bg-surface p-5 shadow-card sm:min-w-[60%] lg:min-w-0"
           >
             <div className="grid grid-cols-2 gap-3">
-              {["Antes", "Depois"].map((tag) => (
+              {[
+                { tag: "Antes", image: story.beforeImage },
+                { tag: "Depois", image: story.afterImage },
+              ].map(({ tag, image }) => (
                 <div
                   key={tag}
-                  className="flex aspect-[3/4] flex-col items-center justify-center gap-2 rounded-[1.5rem] border border-dashed border-border bg-muted/60 text-muted-foreground"
+                  className="relative aspect-[3/4] overflow-hidden rounded-[1.5rem] bg-muted"
                 >
-                  <ImageIcon className="size-6" />
-                  <span className="text-xs font-semibold">{tag}</span>
-                  <span className="px-3 text-center text-[0.625rem] leading-tight">
-                    Imagem a cadastrar
+                  {image ? (
+                    <img
+                      src={image}
+                      alt={`${tag} — ${story.name}`}
+                      className="size-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : null}
+                  <span className="absolute top-2 left-2 rounded-full bg-surface/90 px-2.5 py-1 text-[0.625rem] font-semibold tracking-wide text-foreground uppercase shadow-sm">
+                    {tag}
                   </span>
                 </div>
               ))}
@@ -48,7 +57,7 @@ export function Stories() {
             </div>
 
             <span className="mt-5 inline-flex w-fit rounded-full bg-muted px-2.5 py-1 text-[0.625rem] font-semibold tracking-wide text-muted-foreground uppercase">
-              Placeholder
+              Resultados individuais
             </span>
           </article>
         ))}
