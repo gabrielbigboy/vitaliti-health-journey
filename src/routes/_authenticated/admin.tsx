@@ -28,7 +28,7 @@ import {
 } from "@/components/ui/table";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/admin")({
+export const Route = createFileRoute("/_authenticated/admin")({
   head: () =>
     pageHead({
       title: "Administração",

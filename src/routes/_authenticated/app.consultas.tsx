@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { pageHead } from "@/lib/seo";
 
-export const Route = createFileRoute("/app/consultas")({
+export const Route = createFileRoute("/_authenticated/app/consultas")({
   head: () =>
     pageHead({
       title: "Consultas",

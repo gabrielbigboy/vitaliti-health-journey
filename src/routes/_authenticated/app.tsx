@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 
-export const Route = createFileRoute("/app")({
+export const Route = createFileRoute("/_authenticated/app")({
   component: AppLayout,
 });
 

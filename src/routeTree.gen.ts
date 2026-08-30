@@ -10,8 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AdminRouteImport } from './routes/admin'
-import { Route as AppRouteImport } from './routes/app'
 import { Route as AvaliacaoRouteImport } from './routes/avaliacao'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ComoFuncionaRouteImport } from './routes/como-funciona'
@@ -25,33 +23,25 @@ import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-
 import { Route as ResultadosRouteImport } from './routes/resultados'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
-import { Route as AppIndexRouteImport } from './routes/app.index'
-import { Route as AppConsultasRouteImport } from './routes/app.consultas'
-import { Route as AppDocumentosRouteImport } from './routes/app.documentos'
-import { Route as AppEvolucaoRouteImport } from './routes/app.evolucao'
-import { Route as AppMensagensRouteImport } from './routes/app.mensagens'
-import { Route as AppMinhaContaRouteImport } from './routes/app.minha-conta'
-import { Route as AppNutricaoRouteImport } from './routes/app.nutricao'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as AuthenticatedAppRouteImport } from './routes/_authenticated/app'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as EspecialistasIndexRouteImport } from './routes/especialistas.index'
 import { Route as EspecialistasSlugRouteImport } from './routes/especialistas.$slug'
 import { Route as TratamentosIndexRouteImport } from './routes/tratamentos.index'
 import { Route as TratamentosSlugRouteImport } from './routes/tratamentos.$slug'
+import { Route as AuthenticatedAppIndexRouteImport } from './routes/_authenticated/app.index'
+import { Route as AuthenticatedAppConsultasRouteImport } from './routes/_authenticated/app.consultas'
+import { Route as AuthenticatedAppDocumentosRouteImport } from './routes/_authenticated/app.documentos'
+import { Route as AuthenticatedAppEvolucaoRouteImport } from './routes/_authenticated/app.evolucao'
+import { Route as AuthenticatedAppMensagensRouteImport } from './routes/_authenticated/app.mensagens'
+import { Route as AuthenticatedAppMinhaContaRouteImport } from './routes/_authenticated/app.minha-conta'
+import { Route as AuthenticatedAppNutricaoRouteImport } from './routes/_authenticated/app.nutricao'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AppRoute = AppRouteImport.update({
-  id: '/app',
-  path: '/app',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AvaliacaoRoute = AvaliacaoRouteImport.update({
@@ -119,40 +109,15 @@ const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
   path: '/termos-de-uso',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AppIndexRoute = AppIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AppRoute,
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/_authenticated/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const AppConsultasRoute = AppConsultasRouteImport.update({
-  id: '/consultas',
-  path: '/consultas',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppDocumentosRoute = AppDocumentosRouteImport.update({
-  id: '/documentos',
-  path: '/documentos',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppEvolucaoRoute = AppEvolucaoRouteImport.update({
-  id: '/evolucao',
-  path: '/evolucao',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppMensagensRoute = AppMensagensRouteImport.update({
-  id: '/mensagens',
-  path: '/mensagens',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppMinhaContaRoute = AppMinhaContaRouteImport.update({
-  id: '/minha-conta',
-  path: '/minha-conta',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppNutricaoRoute = AppNutricaoRouteImport.update({
-  id: '/nutricao',
-  path: '/nutricao',
-  getParentRoute: () => AppRoute,
+const AuthenticatedAppRoute = AuthenticatedAppRouteImport.update({
+  id: '/_authenticated/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
@@ -184,11 +149,50 @@ const TratamentosSlugRoute = TratamentosSlugRouteImport.update({
   path: '/tratamentos/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAppIndexRoute = AuthenticatedAppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAppRoute,
+} as any)
+const AuthenticatedAppConsultasRoute =
+  AuthenticatedAppConsultasRouteImport.update({
+    id: '/consultas',
+    path: '/consultas',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
+const AuthenticatedAppDocumentosRoute =
+  AuthenticatedAppDocumentosRouteImport.update({
+    id: '/documentos',
+    path: '/documentos',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
+const AuthenticatedAppEvolucaoRoute =
+  AuthenticatedAppEvolucaoRouteImport.update({
+    id: '/evolucao',
+    path: '/evolucao',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
+const AuthenticatedAppMensagensRoute =
+  AuthenticatedAppMensagensRouteImport.update({
+    id: '/mensagens',
+    path: '/mensagens',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
+const AuthenticatedAppMinhaContaRoute =
+  AuthenticatedAppMinhaContaRouteImport.update({
+    id: '/minha-conta',
+    path: '/minha-conta',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
+const AuthenticatedAppNutricaoRoute =
+  AuthenticatedAppNutricaoRouteImport.update({
+    id: '/nutricao',
+    path: '/nutricao',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
-  '/app': typeof AppRouteWithChildren
   '/avaliacao': typeof AvaliacaoRoute
   '/checkout': typeof CheckoutRoute
   '/como-funciona': typeof ComoFuncionaRoute
@@ -202,23 +206,24 @@ export interface FileRoutesByFullPath {
   '/resultados': typeof ResultadosRoute
   '/sobre': typeof SobreRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
-  '/app/consultas': typeof AppConsultasRoute
-  '/app/documentos': typeof AppDocumentosRoute
-  '/app/evolucao': typeof AppEvolucaoRoute
-  '/app/mensagens': typeof AppMensagensRoute
-  '/app/minha-conta': typeof AppMinhaContaRoute
-  '/app/nutricao': typeof AppNutricaoRoute
+  '/admin': typeof AuthenticatedAdminRoute
+  '/app': typeof AuthenticatedAppRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
   '/especialistas/$slug': typeof EspecialistasSlugRoute
   '/tratamentos/$slug': typeof TratamentosSlugRoute
-  '/app/': typeof AppIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/especialistas/': typeof EspecialistasIndexRoute
   '/tratamentos/': typeof TratamentosIndexRoute
+  '/app/consultas': typeof AuthenticatedAppConsultasRoute
+  '/app/documentos': typeof AuthenticatedAppDocumentosRoute
+  '/app/evolucao': typeof AuthenticatedAppEvolucaoRoute
+  '/app/mensagens': typeof AuthenticatedAppMensagensRoute
+  '/app/minha-conta': typeof AuthenticatedAppMinhaContaRoute
+  '/app/nutricao': typeof AuthenticatedAppNutricaoRoute
+  '/app/': typeof AuthenticatedAppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
   '/avaliacao': typeof AvaliacaoRoute
   '/checkout': typeof CheckoutRoute
   '/como-funciona': typeof ComoFuncionaRoute
@@ -232,25 +237,24 @@ export interface FileRoutesByTo {
   '/resultados': typeof ResultadosRoute
   '/sobre': typeof SobreRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
-  '/app/consultas': typeof AppConsultasRoute
-  '/app/documentos': typeof AppDocumentosRoute
-  '/app/evolucao': typeof AppEvolucaoRoute
-  '/app/mensagens': typeof AppMensagensRoute
-  '/app/minha-conta': typeof AppMinhaContaRoute
-  '/app/nutricao': typeof AppNutricaoRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/especialistas/$slug': typeof EspecialistasSlugRoute
   '/tratamentos/$slug': typeof TratamentosSlugRoute
-  '/app': typeof AppIndexRoute
   '/blog': typeof BlogIndexRoute
   '/especialistas': typeof EspecialistasIndexRoute
   '/tratamentos': typeof TratamentosIndexRoute
+  '/app/consultas': typeof AuthenticatedAppConsultasRoute
+  '/app/documentos': typeof AuthenticatedAppDocumentosRoute
+  '/app/evolucao': typeof AuthenticatedAppEvolucaoRoute
+  '/app/mensagens': typeof AuthenticatedAppMensagensRoute
+  '/app/minha-conta': typeof AuthenticatedAppMinhaContaRoute
+  '/app/nutricao': typeof AuthenticatedAppNutricaoRoute
+  '/app': typeof AuthenticatedAppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
-  '/app': typeof AppRouteWithChildren
   '/avaliacao': typeof AvaliacaoRoute
   '/checkout': typeof CheckoutRoute
   '/como-funciona': typeof ComoFuncionaRoute
@@ -264,26 +268,26 @@ export interface FileRoutesById {
   '/resultados': typeof ResultadosRoute
   '/sobre': typeof SobreRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
-  '/app/consultas': typeof AppConsultasRoute
-  '/app/documentos': typeof AppDocumentosRoute
-  '/app/evolucao': typeof AppEvolucaoRoute
-  '/app/mensagens': typeof AppMensagensRoute
-  '/app/minha-conta': typeof AppMinhaContaRoute
-  '/app/nutricao': typeof AppNutricaoRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/_authenticated/app': typeof AuthenticatedAppRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
   '/especialistas/$slug': typeof EspecialistasSlugRoute
   '/tratamentos/$slug': typeof TratamentosSlugRoute
-  '/app/': typeof AppIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/especialistas/': typeof EspecialistasIndexRoute
   '/tratamentos/': typeof TratamentosIndexRoute
+  '/_authenticated/app/consultas': typeof AuthenticatedAppConsultasRoute
+  '/_authenticated/app/documentos': typeof AuthenticatedAppDocumentosRoute
+  '/_authenticated/app/evolucao': typeof AuthenticatedAppEvolucaoRoute
+  '/_authenticated/app/mensagens': typeof AuthenticatedAppMensagensRoute
+  '/_authenticated/app/minha-conta': typeof AuthenticatedAppMinhaContaRoute
+  '/_authenticated/app/nutricao': typeof AuthenticatedAppNutricaoRoute
+  '/_authenticated/app/': typeof AuthenticatedAppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/admin'
-    | '/app'
     | '/avaliacao'
     | '/checkout'
     | '/como-funciona'
@@ -297,23 +301,24 @@ export interface FileRouteTypes {
     | '/resultados'
     | '/sobre'
     | '/termos-de-uso'
+    | '/admin'
+    | '/app'
+    | '/blog/$slug'
+    | '/especialistas/$slug'
+    | '/tratamentos/$slug'
+    | '/blog/'
+    | '/especialistas/'
+    | '/tratamentos/'
     | '/app/consultas'
     | '/app/documentos'
     | '/app/evolucao'
     | '/app/mensagens'
     | '/app/minha-conta'
     | '/app/nutricao'
-    | '/blog/$slug'
-    | '/especialistas/$slug'
-    | '/tratamentos/$slug'
     | '/app/'
-    | '/blog/'
-    | '/especialistas/'
-    | '/tratamentos/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/admin'
     | '/avaliacao'
     | '/checkout'
     | '/como-funciona'
@@ -327,24 +332,23 @@ export interface FileRouteTypes {
     | '/resultados'
     | '/sobre'
     | '/termos-de-uso'
-    | '/app/consultas'
-    | '/app/documentos'
-    | '/app/evolucao'
-    | '/app/mensagens'
-    | '/app/minha-conta'
-    | '/app/nutricao'
+    | '/admin'
     | '/blog/$slug'
     | '/especialistas/$slug'
     | '/tratamentos/$slug'
-    | '/app'
     | '/blog'
     | '/especialistas'
     | '/tratamentos'
+    | '/app/consultas'
+    | '/app/documentos'
+    | '/app/evolucao'
+    | '/app/mensagens'
+    | '/app/minha-conta'
+    | '/app/nutricao'
+    | '/app'
   id:
     | '__root__'
     | '/'
-    | '/admin'
-    | '/app'
     | '/avaliacao'
     | '/checkout'
     | '/como-funciona'
@@ -358,25 +362,25 @@ export interface FileRouteTypes {
     | '/resultados'
     | '/sobre'
     | '/termos-de-uso'
-    | '/app/consultas'
-    | '/app/documentos'
-    | '/app/evolucao'
-    | '/app/mensagens'
-    | '/app/minha-conta'
-    | '/app/nutricao'
+    | '/_authenticated/admin'
+    | '/_authenticated/app'
     | '/blog/$slug'
     | '/especialistas/$slug'
     | '/tratamentos/$slug'
-    | '/app/'
     | '/blog/'
     | '/especialistas/'
     | '/tratamentos/'
+    | '/_authenticated/app/consultas'
+    | '/_authenticated/app/documentos'
+    | '/_authenticated/app/evolucao'
+    | '/_authenticated/app/mensagens'
+    | '/_authenticated/app/minha-conta'
+    | '/_authenticated/app/nutricao'
+    | '/_authenticated/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AdminRoute: typeof AdminRoute
-  AppRoute: typeof AppRouteWithChildren
   AvaliacaoRoute: typeof AvaliacaoRoute
   CheckoutRoute: typeof CheckoutRoute
   ComoFuncionaRoute: typeof ComoFuncionaRoute
@@ -390,6 +394,8 @@ export interface RootRouteChildren {
   ResultadosRoute: typeof ResultadosRoute
   SobreRoute: typeof SobreRoute
   TermosDeUsoRoute: typeof TermosDeUsoRoute
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
+  AuthenticatedAppRoute: typeof AuthenticatedAppRouteWithChildren
   BlogSlugRoute: typeof BlogSlugRoute
   EspecialistasSlugRoute: typeof EspecialistasSlugRoute
   TratamentosSlugRoute: typeof TratamentosSlugRoute
@@ -405,20 +411,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/app': {
-      id: '/app'
-      path: '/app'
-      fullPath: '/app'
-      preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/avaliacao': {
@@ -512,54 +504,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermosDeUsoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/app/': {
-      id: '/app/'
-      path: '/'
-      fullPath: '/app/'
-      preLoaderRoute: typeof AppIndexRouteImport
-      parentRoute: typeof AppRoute
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/app/consultas': {
-      id: '/app/consultas'
-      path: '/consultas'
-      fullPath: '/app/consultas'
-      preLoaderRoute: typeof AppConsultasRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/documentos': {
-      id: '/app/documentos'
-      path: '/documentos'
-      fullPath: '/app/documentos'
-      preLoaderRoute: typeof AppDocumentosRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/evolucao': {
-      id: '/app/evolucao'
-      path: '/evolucao'
-      fullPath: '/app/evolucao'
-      preLoaderRoute: typeof AppEvolucaoRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/mensagens': {
-      id: '/app/mensagens'
-      path: '/mensagens'
-      fullPath: '/app/mensagens'
-      preLoaderRoute: typeof AppMensagensRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/minha-conta': {
-      id: '/app/minha-conta'
-      path: '/minha-conta'
-      fullPath: '/app/minha-conta'
-      preLoaderRoute: typeof AppMinhaContaRouteImport
-      parentRoute: typeof AppRoute
-    }
-    '/app/nutricao': {
-      id: '/app/nutricao'
-      path: '/nutricao'
-      fullPath: '/app/nutricao'
-      preLoaderRoute: typeof AppNutricaoRouteImport
-      parentRoute: typeof AppRoute
+    '/_authenticated/app': {
+      id: '/_authenticated/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AuthenticatedAppRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/blog/': {
       id: '/blog/'
@@ -603,35 +560,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TratamentosSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/app/': {
+      id: '/_authenticated/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AuthenticatedAppIndexRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/consultas': {
+      id: '/_authenticated/app/consultas'
+      path: '/consultas'
+      fullPath: '/app/consultas'
+      preLoaderRoute: typeof AuthenticatedAppConsultasRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/documentos': {
+      id: '/_authenticated/app/documentos'
+      path: '/documentos'
+      fullPath: '/app/documentos'
+      preLoaderRoute: typeof AuthenticatedAppDocumentosRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/evolucao': {
+      id: '/_authenticated/app/evolucao'
+      path: '/evolucao'
+      fullPath: '/app/evolucao'
+      preLoaderRoute: typeof AuthenticatedAppEvolucaoRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/mensagens': {
+      id: '/_authenticated/app/mensagens'
+      path: '/mensagens'
+      fullPath: '/app/mensagens'
+      preLoaderRoute: typeof AuthenticatedAppMensagensRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/minha-conta': {
+      id: '/_authenticated/app/minha-conta'
+      path: '/minha-conta'
+      fullPath: '/app/minha-conta'
+      preLoaderRoute: typeof AuthenticatedAppMinhaContaRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
+    '/_authenticated/app/nutricao': {
+      id: '/_authenticated/app/nutricao'
+      path: '/nutricao'
+      fullPath: '/app/nutricao'
+      preLoaderRoute: typeof AuthenticatedAppNutricaoRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
+    }
   }
 }
 
-interface AppRouteChildren {
-  AppConsultasRoute: typeof AppConsultasRoute
-  AppDocumentosRoute: typeof AppDocumentosRoute
-  AppEvolucaoRoute: typeof AppEvolucaoRoute
-  AppMensagensRoute: typeof AppMensagensRoute
-  AppMinhaContaRoute: typeof AppMinhaContaRoute
-  AppNutricaoRoute: typeof AppNutricaoRoute
-  AppIndexRoute: typeof AppIndexRoute
+interface AuthenticatedAppRouteChildren {
+  AuthenticatedAppConsultasRoute: typeof AuthenticatedAppConsultasRoute
+  AuthenticatedAppDocumentosRoute: typeof AuthenticatedAppDocumentosRoute
+  AuthenticatedAppEvolucaoRoute: typeof AuthenticatedAppEvolucaoRoute
+  AuthenticatedAppMensagensRoute: typeof AuthenticatedAppMensagensRoute
+  AuthenticatedAppMinhaContaRoute: typeof AuthenticatedAppMinhaContaRoute
+  AuthenticatedAppNutricaoRoute: typeof AuthenticatedAppNutricaoRoute
+  AuthenticatedAppIndexRoute: typeof AuthenticatedAppIndexRoute
 }
 
-const AppRouteChildren: AppRouteChildren = {
-  AppConsultasRoute: AppConsultasRoute,
-  AppDocumentosRoute: AppDocumentosRoute,
-  AppEvolucaoRoute: AppEvolucaoRoute,
-  AppMensagensRoute: AppMensagensRoute,
-  AppMinhaContaRoute: AppMinhaContaRoute,
-  AppNutricaoRoute: AppNutricaoRoute,
-  AppIndexRoute: AppIndexRoute,
+const AuthenticatedAppRouteChildren: AuthenticatedAppRouteChildren = {
+  AuthenticatedAppConsultasRoute: AuthenticatedAppConsultasRoute,
+  AuthenticatedAppDocumentosRoute: AuthenticatedAppDocumentosRoute,
+  AuthenticatedAppEvolucaoRoute: AuthenticatedAppEvolucaoRoute,
+  AuthenticatedAppMensagensRoute: AuthenticatedAppMensagensRoute,
+  AuthenticatedAppMinhaContaRoute: AuthenticatedAppMinhaContaRoute,
+  AuthenticatedAppNutricaoRoute: AuthenticatedAppNutricaoRoute,
+  AuthenticatedAppIndexRoute: AuthenticatedAppIndexRoute,
 }
 
-const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+const AuthenticatedAppRouteWithChildren =
+  AuthenticatedAppRoute._addFileChildren(AuthenticatedAppRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AdminRoute: AdminRoute,
-  AppRoute: AppRouteWithChildren,
   AvaliacaoRoute: AvaliacaoRoute,
   CheckoutRoute: CheckoutRoute,
   ComoFuncionaRoute: ComoFuncionaRoute,
@@ -645,6 +650,8 @@ const rootRouteChildren: RootRouteChildren = {
   ResultadosRoute: ResultadosRoute,
   SobreRoute: SobreRoute,
   TermosDeUsoRoute: TermosDeUsoRoute,
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
+  AuthenticatedAppRoute: AuthenticatedAppRouteWithChildren,
   BlogSlugRoute: BlogSlugRoute,
   EspecialistasSlugRoute: EspecialistasSlugRoute,
   TratamentosSlugRoute: TratamentosSlugRoute,
