@@ -10,6 +10,8 @@ import { Container } from "@/components/ui/section";
 import { Logo } from "@/components/brand/Logo";
 import { pageHead } from "@/lib/seo";
 import { track } from "@/lib/tracking";
+import { checkFormGuard, stripHoneypot } from "@/lib/form-guard";
+import { Honeypot } from "@/components/ui/honeypot";
 
 export const Route = createFileRoute("/criar-conta")({
   head: () =>
@@ -55,10 +57,17 @@ function CriarConta() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [terms, setTerms] = useState(false);
   const [healthConsent, setHealthConsent] = useState(false);
+  const [startedAt] = useState(() => Date.now());
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const raw = Object.fromEntries(new FormData(event.currentTarget)) as Record<string, string>;
+    const rawAll = Object.fromEntries(new FormData(event.currentTarget)) as Record<string, string>;
+    const guard = checkFormGuard({ key: "criar-conta", data: rawAll, startedAt });
+    if (!guard.ok) {
+      toast.error(guard.reason);
+      return;
+    }
+    const raw = stripHoneypot(rawAll);
     const data = {
       ...raw,
       cpf: (raw["cpf"] ?? "").replace(/\D/g, ""),
@@ -92,7 +101,8 @@ function CriarConta() {
           Um único lugar para acompanhar sua jornada de saúde.
         </p>
 
-        <form onSubmit={onSubmit} noValidate className="mt-8 rounded-3xl border border-border bg-surface p-6 md:p-8">
+        <form onSubmit={onSubmit} noValidate className="relative mt-8 rounded-3xl border border-border bg-surface p-6 md:p-8">
+          <Honeypot />
           <div className="grid gap-4 sm:grid-cols-2">
             {fields.map((field) => (
               <div key={field.id}>

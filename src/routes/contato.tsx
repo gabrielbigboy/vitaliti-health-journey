@@ -13,6 +13,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { siteConfig, whatsappHref } from "@/lib/site-config";
 import { pageHead } from "@/lib/seo";
 import { track } from "@/lib/tracking";
+import { checkFormGuard, stripHoneypot } from "@/lib/form-guard";
+import { Honeypot } from "@/components/ui/honeypot";
 
 export const Route = createFileRoute("/contato")({
   head: () =>
@@ -120,7 +122,8 @@ function Contato() {
             <PlaceholderNote>{siteConfig.legalNotice}</PlaceholderNote>
           </div>
 
-          <form onSubmit={onSubmit} className="rounded-3xl border border-border bg-surface p-6 md:p-8" noValidate>
+          <form onSubmit={onSubmit} className="relative rounded-3xl border border-border bg-surface p-6 md:p-8" noValidate>
+            <Honeypot />
             <h2 className="text-lg font-semibold text-foreground">Envie uma mensagem</h2>
 
             <div className="mt-6 space-y-4">
