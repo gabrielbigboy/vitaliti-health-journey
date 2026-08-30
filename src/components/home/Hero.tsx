@@ -3,7 +3,8 @@ import { Check, ArrowRight, Activity, Wifi, ClipboardList } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/section";
 import { track } from "@/lib/tracking";
-import heroImage from "@/assets/hero-vitaliti.jpg";
+import heroVideo from "@/assets/hero-vitaliti.mp4.asset.json";
+import heroPoster from "@/assets/hero-vitaliti-poster.jpg.asset.json";
 
 const benefits = [
   "Avaliação individualizada",
@@ -87,12 +88,15 @@ export function Hero() {
               className="absolute -inset-4 rounded-[3.5rem] border border-primary/10 md:-inset-6"
             />
             <div className="relative overflow-hidden rounded-[2.5rem_2.5rem_2.5rem_1rem] bg-muted shadow-lift md:rounded-[3.5rem_3.5rem_3.5rem_1.25rem]">
-              <img
-                src={heroImage}
-                alt="Pessoa adulta sorrindo ao ar livre em um ambiente natural"
-                width={1024}
-                height={1280}
-                fetchPriority="high"
+              <video
+                src={heroVideo.url}
+                poster={heroPoster.url}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Apresentação da jornada de saúde Vitaliti"
                 className="aspect-[4/5] w-full object-cover"
               />
             </div>
