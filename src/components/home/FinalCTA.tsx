@@ -31,7 +31,7 @@ export function FinalCTA({
           />
           <div className="relative grid gap-6 p-8 md:p-16 lg:max-w-2xl">
             <h2 className="text-section-title text-primary-foreground">{title}</h2>
-            <p className="text-base leading-relaxed text-primary-foreground/80 md:text-lg">
+            <p className="text-lg leading-relaxed text-primary-foreground/80 md:text-xl">
               {text}
             </p>
             <div>
