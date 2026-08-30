@@ -25,7 +25,7 @@ export function WeightTool() {
     <Section tone="soft">
       <div className="grid items-center gap-10 lg:grid-cols-2">
         <div data-reveal>
-          <p className="text-eyebrow text-primary">Ferramenta informativa</p>
+          <Eyebrow>Ferramenta informativa</Eyebrow>
           <h2 className="text-section-title mt-3 text-primary-deep">
             Descubra uma referência para sua meta de peso
           </h2>

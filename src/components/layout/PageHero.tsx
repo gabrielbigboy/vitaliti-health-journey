@@ -24,7 +24,7 @@ export function PageHero({
       />
       <Container>
         <div className="relative max-w-3xl" data-reveal>
-          {eyebrow ? <p className="text-eyebrow text-primary">{eyebrow}</p> : null}
+          {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
           <h1 className="text-display mt-3 text-primary-deep">{title}</h1>
           {description ? (
             <p className="mt-5 max-w-2xl text-lg leading-relaxed text-primary-deep/75 md:text-xl">

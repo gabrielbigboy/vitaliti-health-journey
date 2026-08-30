@@ -33,7 +33,7 @@ export function WeightLoss() {
     <Section tone="default">
       <div className="grid items-center gap-12 lg:grid-cols-2">
         <div data-reveal>
-          <p className="text-eyebrow text-primary">Emagrecimento</p>
+          <Eyebrow>Emagrecimento</Eyebrow>
           <h2 className="text-section-title mt-3 text-foreground">
             Emagrecimento vai muito além da balança.
           </h2>
