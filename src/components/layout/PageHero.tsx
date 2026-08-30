@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Container } from "@/components/ui/section";
+import { Container, Eyebrow } from "@/components/ui/section";
 
 export function PageHero({
   eyebrow,

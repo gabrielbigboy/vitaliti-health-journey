@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Utensils, Brain, HeartHandshake, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Section } from "@/components/ui/section";
+import { Eyebrow, Section } from "@/components/ui/section";
 import { track } from "@/lib/tracking";
 import lifestyle from "@/assets/lifestyle-nutricao.jpg";
 
