@@ -22,7 +22,6 @@ const columns = [
       { label: "Saúde metabólica", to: "/tratamentos/$slug", params: { slug: "saude-metabolica" } },
       { label: "Hábitos", to: "/tratamentos/$slug", params: { slug: "habitos" } },
     ],
-
   },
   {
     title: "Conteúdo",
@@ -66,8 +65,7 @@ export function Footer() {
           <div className="max-w-xs">
             <Logo />
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Tecnologia e cuidado trabalhando juntos por uma jornada de saúde
-              acompanhada de perto.
+              Tecnologia e cuidado trabalhando juntos por uma jornada de saúde acompanhada de perto.
             </p>
             <div className="mt-5 flex gap-2">
               {socials.map(({ label, href, Icon }) => (
@@ -78,7 +76,7 @@ export function Footer() {
                   aria-disabled={!href}
                   target={href ? "_blank" : undefined}
                   rel="noreferrer"
-                  className="inline-flex size-9 items-center justify-center rounded-xl border border-border text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                  className="inline-flex size-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-[transform,background-color,color,border-color] duration-300 hover:-translate-y-1 hover:border-primary/25 hover:bg-accent hover:text-accent-foreground"
                 >
                   <Icon className="size-4" />
                 </a>
@@ -109,10 +107,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 rounded-2xl border border-dashed border-border bg-muted/50 p-5">
-          <p className="text-xs leading-relaxed text-muted-foreground">
-            {siteConfig.legalNotice}
-          </p>
+        <div className="mt-12 rounded-3xl border border-dashed border-border bg-muted/50 p-5">
+          <p className="text-xs leading-relaxed text-muted-foreground">{siteConfig.legalNotice}</p>
           <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
             {siteConfig.disclaimers.prescription} {siteConfig.disclaimers.results}
           </p>

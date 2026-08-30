@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/section";
@@ -47,7 +47,7 @@ export function Header() {
             <Link
               key={item.to}
               to={item.to}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
               activeProps={{ className: "text-foreground bg-accent" }}
             >
               {item.label}
@@ -59,9 +59,10 @@ export function Header() {
           <Button asChild variant="ghost" size="sm">
             <Link to="/entrar">Entrar</Link>
           </Button>
-          <Button asChild size="sm" className="rounded-xl">
+          <Button asChild size="sm">
             <Link to="/avaliacao" onClick={() => track("cta_click", { location: "header" })}>
               Começar minha avaliação
+              <ArrowRight className="size-3.5" />
             </Link>
           </Button>
         </div>
@@ -69,7 +70,7 @@ export function Header() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex size-10 items-center justify-center rounded-xl border border-border bg-surface text-foreground lg:hidden"
+          className="inline-flex size-10 items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-sm transition-transform active:scale-95 lg:hidden"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
         >
@@ -84,18 +85,22 @@ export function Header() {
               <Link
                 key={item.to}
                 to={item.to}
-                className="rounded-xl px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-accent"
+                className="rounded-2xl px-4 py-3 text-base font-medium text-foreground transition-colors hover:bg-accent"
               >
                 {item.label}
               </Link>
             ))}
             <div className="mt-3 flex flex-col gap-2">
-              <Button asChild variant="outline" className="rounded-xl">
+              <Button asChild variant="outline">
                 <Link to="/entrar">Entrar</Link>
               </Button>
-              <Button asChild className="rounded-xl">
-                <Link to="/avaliacao" onClick={() => track("cta_click", { location: "header_mobile" })}>
+              <Button asChild>
+                <Link
+                  to="/avaliacao"
+                  onClick={() => track("cta_click", { location: "header_mobile" })}
+                >
                   Começar minha avaliação
+                  <ArrowRight className="size-4" />
                 </Link>
               </Button>
             </div>

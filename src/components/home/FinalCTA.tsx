@@ -17,7 +17,10 @@ export function FinalCTA({
   return (
     <section className="py-16 md:py-24">
       <Container>
-        <div className="relative overflow-hidden rounded-[2rem] bg-primary-deep">
+        <div
+          className="relative overflow-hidden rounded-[3rem_3rem_1.25rem_3rem] bg-primary-deep shadow-lift"
+          data-reveal="scale"
+        >
           <img
             src={lifestyle}
             alt="Duas pessoas caminhando ao ar livre no fim da tarde"
@@ -28,17 +31,16 @@ export function FinalCTA({
           />
           <div className="relative grid gap-6 p-8 md:p-16 lg:max-w-2xl">
             <h2 className="text-section-title text-primary-foreground">{title}</h2>
-            <p className="text-base leading-relaxed text-primary-foreground/80 md:text-lg">{text}</p>
+            <p className="text-base leading-relaxed text-primary-foreground/80 md:text-lg">
+              {text}
+            </p>
             <div>
-              <Button
-                asChild
-                size="lg"
-                variant="secondary"
-                className="rounded-2xl px-8 text-base shadow-soft"
-              >
+              <Button asChild size="lg" variant="secondary" className="px-8 shadow-soft">
                 <Link to="/avaliacao" onClick={() => track("cta_click", { location })}>
                   Começar minha avaliação
-                  <ArrowRight className="size-4" />
+                  <span className="button-arrow" aria-hidden>
+                    <ArrowRight className="size-4" />
+                  </span>
                 </Link>
               </Button>
             </div>

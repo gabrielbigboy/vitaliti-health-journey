@@ -28,18 +28,15 @@ export const journeySteps = [
 
 export function JourneyTimeline() {
   return (
-    <ol className="relative grid gap-8 md:grid-cols-4 md:gap-6">
+    <ol className="relative grid gap-8 md:grid-cols-4 md:gap-6" data-reveal="stagger">
       <span
         aria-hidden
         className="absolute top-5 left-5 hidden h-px w-[calc(100%-2.5rem)] bg-border md:block"
       />
-      <span
-        aria-hidden
-        className="absolute top-2 bottom-2 left-5 w-px bg-border md:hidden"
-      />
+      <span aria-hidden className="absolute top-2 bottom-2 left-5 w-px bg-border md:hidden" />
       {journeySteps.map((step) => (
-        <li key={step.number} className="relative pl-16 md:pl-0">
-          <span className="absolute top-0 left-0 inline-flex size-10 items-center justify-center rounded-full border border-border bg-surface text-sm font-bold text-primary md:relative md:mb-5 md:flex">
+        <li key={step.number} className="group relative pl-16 md:pl-0">
+          <span className="absolute top-0 left-0 inline-flex size-11 items-center justify-center rounded-full border border-primary/20 bg-surface text-sm font-bold text-primary shadow-soft transition-transform duration-300 group-hover:scale-110 md:relative md:mb-5 md:flex">
             {step.number}
           </span>
           <h3 className="text-base font-semibold text-foreground">{step.title}</h3>
@@ -63,7 +60,7 @@ export function HowItWorks() {
         <JourneyTimeline />
       </div>
 
-      <Button asChild size="lg" className="mt-12 rounded-2xl">
+      <Button asChild size="lg" className="mt-12">
         <Link to="/avaliacao" onClick={() => track("cta_click", { location: "how_it_works" })}>
           Começar avaliação
         </Link>

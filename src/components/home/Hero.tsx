@@ -12,9 +12,17 @@ const benefits = [
 ];
 
 const floating = [
-  { label: "Acompanhamento contínuo", Icon: Activity, className: "left-2 top-8 md:-left-6 md:top-16" },
+  {
+    label: "Acompanhamento contínuo",
+    Icon: Activity,
+    className: "left-2 top-8 md:-left-6 md:top-16",
+  },
   { label: "100% online", Icon: Wifi, className: "right-2 top-1/3 md:-right-5" },
-  { label: "Plano personalizado", Icon: ClipboardList, className: "bottom-6 left-4 md:-left-8 md:bottom-16" },
+  {
+    label: "Plano personalizado",
+    Icon: ClipboardList,
+    className: "bottom-6 left-4 md:-left-8 md:bottom-16",
+  },
 ];
 
 export function Hero() {
@@ -26,7 +34,7 @@ export function Hero() {
       />
       <Container className="relative">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="animate-fade-up">
+          <div data-reveal>
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs font-medium text-muted-foreground">
               <span className="size-1.5 rounded-full bg-primary" />
               HealthTech brasileira • saúde acompanhada de perto
@@ -37,11 +45,11 @@ export function Hero() {
             </h1>
 
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Acompanhamento de saúde, nutrição e tratamento personalizado em uma
-              experiência simples e 100% digital.
+              Acompanhamento de saúde, nutrição e tratamento personalizado em uma experiência
+              simples e 100% digital.
             </p>
 
-            <ul className="mt-7 grid gap-3 sm:grid-cols-1">
+            <ul className="mt-7 grid gap-3 sm:grid-cols-1" data-reveal="stagger">
               {benefits.map((b) => (
                 <li key={b} className="flex items-center gap-3 text-sm font-medium text-foreground">
                   <span className="inline-flex size-6 items-center justify-center rounded-full bg-primary-soft text-primary">
@@ -53,20 +61,32 @@ export function Hero() {
             </ul>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className="rounded-2xl px-7 text-base shadow-soft">
-                <Link to="/avaliacao" onClick={() => track("cta_click", { location: "hero_primary" })}>
+              <Button asChild size="lg" className="px-7">
+                <Link
+                  to="/avaliacao"
+                  onClick={() => track("cta_click", { location: "hero_primary" })}
+                >
                   Começar minha avaliação
-                  <ArrowRight className="size-4" />
+                  <span className="button-arrow" aria-hidden>
+                    <ArrowRight className="size-4" />
+                  </span>
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-2xl border-border bg-surface px-7 text-base">
-                <Link to="/como-funciona">Entenda como funciona</Link>
+              <Button asChild size="lg" variant="outline" className="border-border bg-surface px-7">
+                <Link to="/como-funciona">
+                  Entenda como funciona
+                  <ArrowRight className="size-4" />
+                </Link>
               </Button>
             </div>
           </div>
 
-          <div className="relative animate-fade-in">
-            <div className="relative overflow-hidden rounded-[2rem] bg-muted shadow-lift">
+          <div className="relative" data-reveal="scale">
+            <div
+              aria-hidden
+              className="absolute -inset-4 rounded-[3.5rem] border border-primary/10 md:-inset-6"
+            />
+            <div className="relative overflow-hidden rounded-[2.5rem_2.5rem_2.5rem_1rem] bg-muted shadow-lift md:rounded-[3.5rem_3.5rem_3.5rem_1.25rem]">
               <img
                 src={heroImage}
                 alt="Pessoa adulta sorrindo ao ar livre em um ambiente natural"
@@ -77,12 +97,13 @@ export function Hero() {
               />
             </div>
 
-            {floating.map(({ label, Icon, className }) => (
+            {floating.map(({ label, Icon, className }, index) => (
               <div
                 key={label}
-                className={`absolute ${className} flex items-center gap-2 rounded-2xl border border-border bg-surface/95 px-3.5 py-2.5 text-xs font-semibold text-foreground shadow-float backdrop-blur`}
+                style={{ animationDelay: `${index * -1.35}s` }}
+                className={`soft-float absolute ${className} flex items-center gap-2 rounded-full border border-border bg-surface/95 px-3.5 py-2.5 text-xs font-semibold text-foreground shadow-float backdrop-blur`}
               >
-                <span className="inline-flex size-6 items-center justify-center rounded-lg bg-primary-soft text-primary">
+                <span className="inline-flex size-7 items-center justify-center rounded-full bg-primary-soft text-primary">
                   <Icon className="size-3.5" />
                 </span>
                 {label}

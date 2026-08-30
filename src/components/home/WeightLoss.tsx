@@ -32,16 +32,19 @@ export function WeightLoss() {
   return (
     <Section tone="default">
       <div className="grid items-center gap-12 lg:grid-cols-2">
-        <div>
+        <div data-reveal>
           <p className="text-eyebrow text-primary">Emagrecimento</p>
           <h2 className="text-section-title mt-3 text-foreground">
             Emagrecimento vai muito além da balança.
           </h2>
 
-          <div className="mt-8 space-y-5">
+          <div className="mt-8 space-y-3" data-reveal="stagger">
             {pillars.map(({ title, text, Icon }) => (
-              <div key={title} className="flex gap-4">
-                <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-2xl bg-primary-soft text-primary">
+              <div
+                key={title}
+                className="interactive-card flex gap-4 rounded-3xl border border-transparent p-3 hover:bg-surface"
+              >
+                <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary">
                   <Icon className="size-5" />
                 </span>
                 <div>
@@ -52,14 +55,17 @@ export function WeightLoss() {
             ))}
           </div>
 
-          <Button asChild size="lg" className="mt-9 rounded-2xl">
+          <Button asChild size="lg" className="mt-9">
             <Link to="/avaliacao" onClick={() => track("cta_click", { location: "emagrecimento" })}>
               Quero começar minha jornada
             </Link>
           </Button>
         </div>
 
-        <div className="overflow-hidden rounded-[2rem] shadow-lift">
+        <div
+          className="overflow-hidden rounded-[3rem_3rem_1.25rem_3rem] shadow-lift"
+          data-reveal="scale"
+        >
           <img
             src={lifestyle}
             alt="Pessoa preparando uma refeição saudável em casa"

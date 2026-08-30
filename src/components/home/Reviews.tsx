@@ -13,9 +13,12 @@ export function Reviews() {
         className="[&_h2]:text-primary-deep [&_p]:text-primary-deep/75"
       />
 
-      <div className="mt-10 grid gap-4 md:grid-cols-3">
+      <div className="mt-10 grid gap-4 md:grid-cols-3" data-reveal="stagger">
         {reviews.map((review) => (
-          <article key={review.id} className="rounded-3xl border border-border bg-surface p-6">
+          <article
+            key={review.id}
+            className="interactive-card rounded-[2rem] border border-border bg-surface p-6 shadow-soft"
+          >
             <div className="flex gap-0.5 text-primary" aria-label="Avaliação demonstrativa">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="size-4 fill-current" />

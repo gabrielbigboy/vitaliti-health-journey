@@ -39,9 +39,7 @@ export function Section({
 }
 
 export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
-  return (
-    <p className={cn("text-eyebrow text-primary", className)}>{children}</p>
-  );
+  return <p className={cn("text-eyebrow text-primary", className)}>{children}</p>;
 }
 
 export function SectionHeading({
@@ -59,11 +57,8 @@ export function SectionHeading({
 }) {
   return (
     <div
-      className={cn(
-        "max-w-2xl",
-        align === "center" && "mx-auto text-center",
-        className,
-      )}
+      data-reveal
+      className={cn("max-w-2xl", align === "center" && "mx-auto text-center", className)}
     >
       {eyebrow ? <Eyebrow className="mb-3">{eyebrow}</Eyebrow> : null}
       <h2 className="text-section-title">{title}</h2>
@@ -78,7 +73,7 @@ export function SectionHeading({
 
 export function PlaceholderNote({ children }: { children: ReactNode }) {
   return (
-    <p className="mt-6 rounded-xl border border-dashed border-border bg-muted/60 px-4 py-3 text-xs leading-relaxed text-muted-foreground">
+    <p className="mt-6 rounded-2xl border border-dashed border-border bg-muted/60 px-4 py-3 text-xs leading-relaxed text-muted-foreground">
       {children}
     </p>
   );

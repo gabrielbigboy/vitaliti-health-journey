@@ -13,9 +13,17 @@ export function PageHero({
   actions?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-primary-soft py-14 md:py-20">
+    <section className="relative overflow-hidden rounded-b-[2.5rem] border-b border-border bg-primary-soft py-14 md:rounded-b-[4rem] md:py-20">
+      <div
+        aria-hidden
+        className="absolute -top-24 -right-20 size-80 rounded-full border border-primary/10"
+      />
+      <div
+        aria-hidden
+        className="absolute -top-8 -right-8 size-52 rounded-full border border-primary/10"
+      />
       <Container>
-        <div className="max-w-3xl">
+        <div className="relative max-w-3xl" data-reveal>
           {eyebrow ? <p className="text-eyebrow text-primary">{eyebrow}</p> : null}
           <h1 className="text-display mt-3 text-primary-deep">{title}</h1>
           {description ? (

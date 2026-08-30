@@ -23,7 +23,10 @@ const features = [
 
 function PhoneMockup() {
   return (
-    <div className="mx-auto w-[17rem] rounded-[2.5rem] border-8 border-primary-deep/90 bg-primary-deep p-1 shadow-lift">
+    <div
+      className="mx-auto w-[17rem] rounded-[3rem] border-8 border-primary-deep/90 bg-primary-deep p-1 shadow-lift"
+      data-reveal="scale"
+    >
       <div className="overflow-hidden rounded-[2rem] bg-background">
         <div className="flex items-center justify-between bg-surface px-5 pt-4 pb-3">
           <span className="text-[0.625rem] font-semibold text-muted-foreground">9:41</span>
@@ -80,13 +83,15 @@ export function AppPreview() {
             title="Sua jornada de saúde na palma da mão"
             description="Tudo o que importa em um só lugar, do plano ao acompanhamento."
           />
-          <ul className="mt-9 grid grid-cols-2 gap-3">
+          <ul className="mt-9 grid grid-cols-2 gap-3" data-reveal="stagger">
             {features.map(({ label, Icon }) => (
               <li
                 key={label}
-                className="flex items-center gap-2.5 rounded-2xl border border-border bg-background px-3.5 py-3 text-sm font-medium text-foreground"
+                className="interactive-card flex items-center gap-2.5 rounded-full border border-border bg-background px-3.5 py-3 text-sm font-medium text-foreground"
               >
-                <Icon className="size-4 text-primary" />
+                <span className="inline-flex size-7 items-center justify-center rounded-full bg-primary-soft text-primary">
+                  <Icon className="size-3.5" />
+                </span>
                 {label}
               </li>
             ))}

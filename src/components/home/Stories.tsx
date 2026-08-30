@@ -12,17 +12,20 @@ export function Stories() {
         description="Conheça pessoas que decidiram cuidar da própria saúde com acompanhamento."
       />
 
-      <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:overflow-visible">
+      <div
+        className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:overflow-visible"
+        data-reveal="stagger"
+      >
         {stories.map((story) => (
           <article
             key={story.id}
-            className="flex min-w-[85%] shrink-0 snap-center flex-col rounded-3xl border border-border bg-surface p-5 shadow-card sm:min-w-[60%] lg:min-w-0"
+            className="interactive-card flex min-w-[85%] shrink-0 snap-center flex-col rounded-[2rem] border border-border bg-surface p-5 shadow-card sm:min-w-[60%] lg:min-w-0"
           >
             <div className="grid grid-cols-2 gap-3">
               {["Antes", "Depois"].map((tag) => (
                 <div
                   key={tag}
-                  className="flex aspect-[3/4] flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-border bg-muted/60 text-muted-foreground"
+                  className="flex aspect-[3/4] flex-col items-center justify-center gap-2 rounded-[1.5rem] border border-dashed border-border bg-muted/60 text-muted-foreground"
                 >
                   <ImageIcon className="size-6" />
                   <span className="text-xs font-semibold">{tag}</span>

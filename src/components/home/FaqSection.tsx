@@ -21,7 +21,12 @@ export function FaqSection({
   return (
     <Section tone={tone} id="faq">
       <SectionHeading eyebrow="FAQ" title={title} description={description} />
-      <Accordion type="single" collapsible className="mt-10 w-full max-w-3xl">
+      <Accordion
+        type="single"
+        collapsible
+        className="mt-10 grid w-full max-w-3xl gap-3"
+        data-reveal="stagger"
+      >
         {items.map((item, index) => (
           <AccordionItem key={item.q} value={`item-${index}`} className="border-border">
             <AccordionTrigger className="text-left text-base font-semibold hover:no-underline">

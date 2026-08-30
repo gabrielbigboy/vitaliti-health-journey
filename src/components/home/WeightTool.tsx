@@ -24,14 +24,14 @@ export function WeightTool() {
   return (
     <Section tone="soft">
       <div className="grid items-center gap-10 lg:grid-cols-2">
-        <div>
+        <div data-reveal>
           <p className="text-eyebrow text-primary">Ferramenta informativa</p>
           <h2 className="text-section-title mt-3 text-primary-deep">
             Descubra uma referência para sua meta de peso
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-primary-deep/75">
-            Uma referência educacional para começar a conversa com um profissional —
-            nunca uma promessa de resultado.
+            Uma referência educacional para começar a conversa com um profissional — nunca uma
+            promessa de resultado.
           </p>
           <p className="mt-6 flex max-w-md gap-2 text-xs leading-relaxed text-primary-deep/70">
             <Info className="mt-0.5 size-4 shrink-0" />
@@ -39,7 +39,10 @@ export function WeightTool() {
           </p>
         </div>
 
-        <div className="rounded-3xl border border-border bg-surface p-6 shadow-card md:p-8">
+        <div
+          className="rounded-[2rem] border border-border bg-surface p-6 shadow-card md:p-8"
+          data-reveal="scale"
+        >
           <div>
             <Label htmlFor="peso" className="text-sm font-semibold">
               Qual é o seu peso atual?
@@ -66,7 +69,8 @@ export function WeightTool() {
 
           <div className="mt-7">
             <Label htmlFor="altura" className="text-sm font-semibold">
-              Qual é sua altura? <span className="font-normal text-muted-foreground">(opcional)</span>
+              Qual é sua altura?{" "}
+              <span className="font-normal text-muted-foreground">(opcional)</span>
             </Label>
             <Input
               id="altura"
@@ -75,12 +79,12 @@ export function WeightTool() {
               placeholder="Em centímetros, ex.: 170"
               value={height}
               onChange={(e) => setHeight(e.target.value.replace(/[^\d]/g, ""))}
-              className="mt-2 rounded-xl"
+              className="mt-2"
             />
           </div>
 
           {bmi ? (
-            <div className="mt-6 rounded-2xl bg-primary-soft p-4">
+            <div className="mt-6 rounded-3xl bg-primary-soft p-4">
               <p className="text-sm font-semibold text-primary-deep">
                 Seu IMC estimado: {bmi.toFixed(1).replace(".", ",")}
               </p>
@@ -92,7 +96,7 @@ export function WeightTool() {
             <p className="text-sm font-medium text-foreground">
               Quer entender qual estratégia pode fazer sentido para você?
             </p>
-            <Button asChild className="mt-4 w-full rounded-2xl" size="lg">
+            <Button asChild className="mt-4 w-full" size="lg">
               <Link to="/avaliacao" onClick={() => track("cta_click", { location: "weight_tool" })}>
                 Fazer avaliação
               </Link>
