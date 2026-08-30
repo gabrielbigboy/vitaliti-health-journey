@@ -35,7 +35,7 @@ export function Hero() {
       <Container className="relative">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div data-reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs font-medium text-muted-foreground">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm font-medium text-muted-foreground">
               <span className="size-1.5 rounded-full bg-primary" />
               HealthTech brasileira • saúde acompanhada de perto
             </span>
@@ -44,7 +44,7 @@ export function Hero() {
               Sua jornada para uma vida mais saudável começa aqui.
             </h1>
 
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-5 max-w-xl text-xl leading-relaxed text-muted-foreground md:text-2xl">
               Acompanhamento de saúde, nutrição e tratamento personalizado em uma experiência
               simples e 100% digital.
             </p>

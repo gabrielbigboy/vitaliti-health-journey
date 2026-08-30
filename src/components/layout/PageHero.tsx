@@ -27,7 +27,7 @@ export function PageHero({
           {eyebrow ? <p className="text-eyebrow text-primary">{eyebrow}</p> : null}
           <h1 className="text-display mt-3 text-primary-deep">{title}</h1>
           {description ? (
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-primary-deep/75 md:text-lg">
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-primary-deep/75 md:text-xl">
               {description}
             </p>
           ) : null}
