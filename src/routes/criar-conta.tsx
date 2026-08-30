@@ -179,7 +179,7 @@ function CriarConta() {
             </label>
           </div>
 
-          <Button type="submit" size="lg" className="mt-7 w-full rounded-2xl">
+          <Button type="submit" size="lg" className="mt-7 w-full rounded-2xl" disabled={loading}>
             Criar conta
           </Button>
 
