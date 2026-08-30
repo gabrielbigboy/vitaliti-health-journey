@@ -54,20 +54,15 @@ const fields = [
 ];
 
 function CriarConta() {
+  const navigate = useNavigate();
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [terms, setTerms] = useState(false);
   const [healthConsent, setHealthConsent] = useState(false);
-  const [startedAt] = useState(() => Date.now());
+  const [loading, setLoading] = useState(false);
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const rawAll = Object.fromEntries(new FormData(event.currentTarget)) as Record<string, string>;
-    const guard = checkFormGuard({ key: "criar-conta", data: rawAll, startedAt });
-    if (!guard.ok) {
-      toast.error(guard.reason);
-      return;
-    }
-    const raw = stripHoneypot(rawAll);
+    const raw = Object.fromEntries(new FormData(event.currentTarget)) as Record<string, string>;
     const data = {
       ...raw,
       cpf: (raw["cpf"] ?? "").replace(/\D/g, ""),
@@ -86,11 +81,34 @@ function CriarConta() {
       return;
     }
     setErrors({});
-    track("signup_complete");
-    toast.success("Cadastro validado", {
-      description: "A criação de conta será conectada à autenticação na próxima etapa.",
+    setLoading(true);
+    const { error } = await supabase.auth.signUp({
+      email: parsed.data.email,
+      password: parsed.data.senha,
+      options: {
+        emailRedirectTo: `${window.location.origin}/app`,
+        data: {
+          first_name: parsed.data.nome,
+          last_name: parsed.data.sobrenome,
+        },
+      },
     });
+    setLoading(false);
+    if (error) {
+      toast.error(
+        error.message.toLowerCase().includes("registered")
+          ? "Este e-mail já possui cadastro."
+          : "Não foi possível criar a conta agora.",
+      );
+      return;
+    }
+    track("signup_complete");
+    toast.success("Conta criada", {
+      description: "Confirme seu e-mail, se solicitado, para acessar sua área.",
+    });
+    navigate({ to: "/entrar" });
   };
+
 
   return (
     <div className="min-h-screen bg-background py-10">
