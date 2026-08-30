@@ -38,7 +38,7 @@ export function Stories() {
                       loading="lazy"
                     />
                   ) : null}
-                  <span className="absolute top-2 left-2 rounded-full bg-surface/90 px-2.5 py-1 text-[0.625rem] font-semibold tracking-wide text-foreground uppercase shadow-sm">
+                  <span className="clinical-chip clinical-chip-muted absolute top-2 left-2 bg-surface/90 shadow-sm">
                     {tag}
                   </span>
                 </div>
@@ -56,7 +56,7 @@ export function Stories() {
               </p>
             </div>
 
-            <span className="mt-5 inline-flex w-fit rounded-full bg-muted px-2.5 py-1 text-[0.625rem] font-semibold tracking-wide text-muted-foreground uppercase">
+            <span className="clinical-chip clinical-chip-muted mt-5 w-fit">
               Resultados individuais
             </span>
           </article>

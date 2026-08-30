@@ -39,7 +39,7 @@ function EspecialistasIndex() {
               type="button"
               onClick={() => setFilter(f.value)}
               className={cn(
-                "rounded-full border px-4 py-2 text-sm font-medium transition-colors",
+                "clinical-filter",
                 filter === f.value
                   ? "border-primary bg-primary text-primary-foreground"
                   : "border-border bg-surface text-muted-foreground hover:bg-accent hover:text-accent-foreground",

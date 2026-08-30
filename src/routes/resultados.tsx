@@ -49,7 +49,7 @@ function Resultados() {
               type="button"
               onClick={() => setFilter(f.value)}
               className={cn(
-                "rounded-full border px-4 py-2 text-sm font-medium transition-colors",
+                "clinical-filter",
                 filter === f.value
                   ? "border-primary bg-primary text-primary-foreground"
                   : "border-border bg-surface text-muted-foreground hover:bg-accent hover:text-accent-foreground",
@@ -80,7 +80,7 @@ function Resultados() {
                         loading="lazy"
                       />
                     ) : null}
-                    <span className="absolute top-2 left-2 rounded-full bg-surface/90 px-2.5 py-1 text-[0.625rem] font-semibold tracking-wide text-foreground uppercase shadow-sm">
+                    <span className="clinical-chip clinical-chip-muted absolute top-2 left-2 bg-surface/90 shadow-sm">
                       {tag}
                     </span>
                   </div>
@@ -94,7 +94,7 @@ function Resultados() {
                 <Quote className="mt-0.5 size-4 shrink-0 text-primary" />
                 {story.quote}
               </p>
-              <span className="mt-4 inline-flex rounded-full bg-muted px-2.5 py-1 text-[0.625rem] font-semibold tracking-wide text-muted-foreground uppercase">
+              <span className="clinical-chip clinical-chip-muted mt-4">
                 Resultados individuais
               </span>
             </article>
