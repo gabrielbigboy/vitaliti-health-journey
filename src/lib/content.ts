@@ -11,12 +11,7 @@ import case02Before from "@/assets/results/caso-02-antes.webp";
 import case02After from "@/assets/results/caso-02-depois.webp";
 import case03Before from "@/assets/results/caso-03-antes.webp";
 import case03After from "@/assets/results/caso-03-depois.webp";
-import louiseBenevides from "@/assets/experts/louise-benevides.webp";
-import henriqueParanhos from "@/assets/experts/henrique-paranhos.webp";
-import vitorLima from "@/assets/experts/vitor-lima.webp";
 import mariaOliveira from "@/assets/experts/maria-oliveira.webp";
-import mayanaRocha from "@/assets/experts/mayana-rocha.webp";
-import anaPiedade from "@/assets/experts/ana-piedade.webp";
 import sandraVivas from "@/assets/experts/sandra-vivas.webp";
 import camilaRocha from "@/assets/experts/camila-rocha.webp";
 import rachelDelBusso from "@/assets/experts/rachel-del-busso.webp";
@@ -101,36 +96,6 @@ export type Expert = {
 
 export const experts: Expert[] = [
   {
-    slug: "louise-benevides",
-    name: "Dra. Louise Benevides",
-    category: "medicos",
-    categoryLabel: "Medicina",
-    specialty: "Médica Nutróloga",
-    registry: "CRM 24.979 | RQE 18230",
-    image: louiseBenevides,
-    areas: ["Nutrologia"],
-  },
-  {
-    slug: "henrique-paranhos",
-    name: "Dr. Henrique Paranhos",
-    category: "medicos",
-    categoryLabel: "Medicina",
-    specialty: "Médico Ortopedista e Traumatologista",
-    registry: "CRM 27208-BA | RQE 19344",
-    image: henriqueParanhos,
-    areas: ["Ortopedia", "Traumatologia"],
-  },
-  {
-    slug: "vitor-lima",
-    name: "Dr. Vitor Lima",
-    category: "medicos",
-    categoryLabel: "Medicina",
-    specialty: "Cirurgião bariátrico e nutrólogo",
-    registry: "CRM-BA 19368 | RQE 11.448 - RQE 11.449",
-    image: vitorLima,
-    areas: ["Cirurgia bariátrica", "Nutrologia"],
-  },
-  {
     slug: "maria-oliveira",
     name: "Maria D. Oliveira",
     category: "medicos",
@@ -139,26 +104,6 @@ export const experts: Expert[] = [
     registry: "CRM 5549-BA",
     image: mariaOliveira,
     areas: ["Direção médica"],
-  },
-  {
-    slug: "mayana-rocha",
-    name: "Dra. Mayana Rocha",
-    category: "medicos",
-    categoryLabel: "Medicina",
-    specialty: "Médica",
-    registry: "CRM 42869-BA",
-    image: mayanaRocha,
-    areas: ["Medicina"],
-  },
-  {
-    slug: "ana-piedade",
-    name: "Dra. Ana Piedade",
-    category: "medicos",
-    categoryLabel: "Medicina",
-    specialty: "Médica Psiquiatra",
-    registry: "CRM-BA 19376 | RQE 20831",
-    image: anaPiedade,
-    areas: ["Psiquiatria"],
   },
   {
     slug: "sandra-vivas",
