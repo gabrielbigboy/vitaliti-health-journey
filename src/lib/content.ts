@@ -105,9 +105,6 @@ export const experts: Expert[] = [
 export const expertFilters = [
   { value: "todos", label: "Todos" },
   { value: "medicos", label: "Médicos" },
-  { value: "nutricionistas", label: "Nutricionistas" },
-  { value: "enfermagem", label: "Enfermagem" },
-  { value: "psicologia", label: "Psicologia" },
 ] as const;
 
 export type Story = {
