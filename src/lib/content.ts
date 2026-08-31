@@ -12,11 +12,6 @@ import case02After from "@/assets/results/caso-02-depois.webp";
 import case03Before from "@/assets/results/caso-03-antes.webp";
 import case03After from "@/assets/results/caso-03-depois.webp";
 import mariaOliveira from "@/assets/experts/maria-oliveira.webp";
-import sandraVivas from "@/assets/experts/sandra-vivas.webp";
-import camilaRocha from "@/assets/experts/camila-rocha.webp";
-import rachelDelBusso from "@/assets/experts/rachel-del-busso.webp";
-import danielaSeixas from "@/assets/experts/daniela-seixas.webp";
-import suyanLima from "@/assets/experts/suyan-lima.webp";
 
 export const PLACEHOLDER = true;
 
@@ -105,64 +100,11 @@ export const experts: Expert[] = [
     image: mariaOliveira,
     areas: ["Direção médica"],
   },
-  {
-    slug: "sandra-vivas",
-    name: "Sandra Vivas",
-    category: "enfermagem",
-    categoryLabel: "Enfermagem",
-    specialty: "Enfermeira-chefe",
-    registry: "COREN 372.170-BA",
-    image: sandraVivas,
-    areas: ["Enfermagem"],
-  },
-  {
-    slug: "camila-da-rocha",
-    name: "Camila da Rocha",
-    category: "nutricionistas",
-    categoryLabel: "Nutrição",
-    specialty: "Nutricionista",
-    registry: "CRN6 41691",
-    image: camilaRocha,
-    areas: ["Nutrição"],
-  },
-  {
-    slug: "rachel-del-busso",
-    name: "Rachel Del Busso",
-    category: "nutricionistas",
-    categoryLabel: "Nutrição",
-    specialty: "Nutricionista",
-    registry: "CRN3 56088",
-    image: rachelDelBusso,
-    areas: ["Nutrição"],
-  },
-  {
-    slug: "daniela-seixas",
-    name: "Daniela Seixas",
-    category: "nutricionistas",
-    categoryLabel: "Nutrição",
-    specialty: "Nutricionista",
-    registry: "CRN 28617",
-    image: danielaSeixas,
-    areas: ["Nutrição"],
-  },
-  {
-    slug: "suyan-lima",
-    name: "Suyan Lima",
-    category: "psicologia",
-    categoryLabel: "Psicologia",
-    specialty: "Psicóloga",
-    registry: "CRP 03/11891",
-    image: suyanLima,
-    areas: ["Psicologia"],
-  },
 ];
 
 export const expertFilters = [
   { value: "todos", label: "Todos" },
   { value: "medicos", label: "Médicos" },
-  { value: "nutricionistas", label: "Nutricionistas" },
-  { value: "enfermagem", label: "Enfermagem" },
-  { value: "psicologia", label: "Psicologia" },
 ] as const;
 
 export type Story = {
