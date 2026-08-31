@@ -12,11 +12,6 @@ import case02After from "@/assets/results/caso-02-depois.webp";
 import case03Before from "@/assets/results/caso-03-antes.webp";
 import case03After from "@/assets/results/caso-03-depois.webp";
 import mariaOliveira from "@/assets/experts/maria-oliveira.webp";
-import sandraVivas from "@/assets/experts/sandra-vivas.webp";
-import camilaRocha from "@/assets/experts/camila-rocha.webp";
-import rachelDelBusso from "@/assets/experts/rachel-del-busso.webp";
-import danielaSeixas from "@/assets/experts/daniela-seixas.webp";
-import suyanLima from "@/assets/experts/suyan-lima.webp";
 
 export const PLACEHOLDER = true;
 
